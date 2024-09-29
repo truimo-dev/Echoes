@@ -15,7 +15,7 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
     title: '浅小沫',
-    description: '',
+    description: '浅小沫的站点',
 };
 
 export const viewport: Viewport = {
