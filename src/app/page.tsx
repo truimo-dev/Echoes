@@ -1,11 +1,30 @@
+import Image from 'next/image';
+
 export default function Home() {
     return (
-        <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-            <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-                <p>正在建设中...</p>
+        <div className="font-[family-name:var(--font-geist-sans)]">
+            <header className="font-normal static top-8">
+                <div className="m-8 text-center">
+                    <Image src="/avatar.jpg" alt="avatar" height="96" width="96" className="rounded-full w-24 h-24 inline"></Image>
+                    <h1 className="text-2xl font-bold mx-auto my-5">XiaoMo Qian</h1>
+                    <p>Meeting you is the best of the best.</p>
+                </div>
+            </header>
+            <main className="grid grid-cols-1 gap-y-2 mx-auto max-w-4/5 lg:w-1/2">
+                <p>Hello, I&#39;m QianXiaoMo. Nice to meet you.</p>
+                <p>Full stack engineer / 2024 Graduate.</p>
+                <p>-</p>
+                <p>My slogan:</p>
+                <ol className="list-inside list-disc text-sm font-[family-name:var(--font-geist-mono)]">
+                    <li className="mb-2">Read widely and travel extensively.</li>
+                    <li className="mb-2">Realize that the past cannot be changed, but know that the future can be pursued.</li>
+                    <li>Talk is cheap, show me the code.</li>
+                </ol>
             </main>
-            <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-                <p>Copyright &copy; 2024 浅小沫. All Rights Reserved.</p>
+            <footer>
+                <div className="m-8 text-center">
+                    <p>Copyright &copy; 2024 浅小沫. All Rights Reserved.</p>
+                </div>
             </footer>
         </div>
     );
