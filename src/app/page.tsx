@@ -20,6 +20,9 @@ export default function Home() {
                     <li className="mb-2">Realize that the past cannot be changed, but know that the future can be pursued.</li>
                     <li>Talk is cheap, show me the code.</li>
                 </ol>
+                <p>-</p>
+                <p>Contact:</p>
+                <p>Email: <a href="mailto:i@truimo.com">i@truimo.com</a></p>
             </main>
             <footer>
                 <div className="m-8 text-center">
