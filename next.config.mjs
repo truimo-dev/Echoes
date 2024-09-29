@@ -2,8 +2,8 @@ const isProd = process.env.NODE_ENV === 'production'
 
 const cspHeader = isProd ? `
     default-src 'self';
-    script-src 'self';
-    style-src 'self';
+    script-src 'self' 'unsafe-inline';
+    style-src 'self' 'unsafe-inline';
     img-src 'self' blob: data:;
     font-src 'self';
     object-src 'none';
