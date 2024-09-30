@@ -14,16 +14,16 @@ export default function Home() {
             <main className="grid grid-cols-1 gap-y-2 mx-auto max-w-4/5 lg:w-1/2">
                 <p>Hello, I&#39;m QianXiaoMo. Nice to meet you.</p>
                 <p>Full stack engineer / 2024 Graduate.</p>
-                <p>-</p>
+                <p className="invisible">-</p>
                 <p>My slogan:</p>
                 <ol className="list-inside list-disc text-sm font-[family-name:var(--font-geist-mono)]">
                     <li className="mb-2">Read widely and travel extensively.</li>
                     <li className="mb-2">Realize that the past cannot be changed, but know that the future can be pursued.</li>
                     <li>Talk is cheap, show me the code.</li>
                 </ol>
-                <p>-</p>
+                <p className="invisible">-</p>
                 <p>Contact:</p>
-                <p>Email: <a href="mailto:i@truimo.com">i@truimo.com</a></p>
+                <p>Email: <Link href="mailto:i@truimo.com" className="hover:underline active:underline">i@truimo.com</Link></p>
             </main>
             <footer>
                 <div className="m-8 text-center">
