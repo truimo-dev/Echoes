@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from "next/link";
 
 export default function Home() {
     return (
@@ -26,7 +27,7 @@ export default function Home() {
             </main>
             <footer>
                 <div className="m-8 text-center">
-                    <p>Copyright &copy; 2024 浅小沫. All Rights Reserved.</p>
+                    <p>Copyright &copy; 2024 <Link href="https://github.com/Truimo" target="_blank" className="hover:underline active:underline">浅小沫</Link>. All Rights Reserved.</p>
                 </div>
             </footer>
         </div>
