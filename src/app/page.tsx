@@ -12,8 +12,8 @@ export default function Home() {
                 </div>
             </header>
             <main className="grid grid-cols-1 gap-y-2 mx-auto max-w-4/5 lg:w-1/2">
-                <p>Hello, I&#39;m QianXiaoMo. Nice to meet you.</p>
-                <p>Full stack engineer / 2024 Graduate.</p>
+                <p>Hello, I&#39;m QianXiaoMo. Nice to meet you!</p>
+                <p>Full stack engineer.</p>
                 <p className="invisible">-</p>
                 <p>My slogan:</p>
                 <ol className="list-inside list-disc text-sm font-[family-name:var(--font-geist-mono)]">
