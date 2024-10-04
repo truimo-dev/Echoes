@@ -14,9 +14,9 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-    title: '浅小沫',
-    description: '浅小沫的站点',
-    keywords: ['浅小沫', 'truimo', '小沫', '小白']
+    title: 'QianXiaomo',
+    description: 'This is QianXiaomo\'s website.',
+    keywords: ['QianXiaomo', 'Xiaomo', '浅小沫', 'truimo', '小沫', '小白']
 };
 
 export const viewport: Viewport = {

@@ -7,12 +7,12 @@ export default function Home() {
             <header className="font-normal static top-8">
                 <div className="m-8 text-center">
                     <Image src="/avatar.jpg" alt="avatar" height="96" width="96" className="rounded-full w-24 h-24 inline"></Image>
-                    <h1 className="text-2xl font-bold mx-auto my-5">XiaoMo Qian</h1>
+                    <h1 className="text-2xl font-bold mx-auto my-5">Xiaomo Qian</h1>
                     <p>Meeting you is the best of the best.</p>
                 </div>
             </header>
             <main className="grid grid-cols-1 gap-y-2 mx-auto max-w-4/5 lg:w-1/2">
-                <p>Hello, I&#39;m QianXiaoMo. Nice to meet you!</p>
+                <p>Hello, I&#39;m QianXiaomo. Nice to meet you!</p>
                 <p>Full stack engineer.</p>
                 <p className="invisible">-</p>
                 <p>My slogan:</p>
