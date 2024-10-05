@@ -28,7 +28,9 @@ body {
     }
 }
 
-a:hover, a:active {
-    color: var(--primary);
-    text-decoration-line: underline;
+@layer base {
+    a:hover, a:active {
+        color: var(--primary);
+        text-decoration-line: underline;
+    }
 }
