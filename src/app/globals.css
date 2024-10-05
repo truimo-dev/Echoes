@@ -5,12 +5,14 @@
 :root {
     --background: #ffffff;
     --foreground: #171717;
+    --primary: #0ea5e9;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
         --background: #0a0a0a;
         --foreground: #ededed;
+        --primary: #0a86c0;
     }
 }
 
@@ -24,4 +26,9 @@ body {
     .text-balance {
         text-wrap: balance;
     }
+}
+
+a:hover, a:active {
+    color: var(--primary);
+    text-decoration-line: underline;
 }
