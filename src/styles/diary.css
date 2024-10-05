@@ -1,0 +1,10 @@
+.diary {
+    width: 100%;
+    margin: 0 auto;
+}
+
+@media (min-width: 460px) {
+    .diary {
+        max-width: 425px;
+    }
+}

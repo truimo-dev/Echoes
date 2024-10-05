@@ -1,12 +1,17 @@
 import Image from 'next/image';
-import Link from "next/link";
+import Link from 'next/link';
 
 export default function Home() {
     return (
         <div className="font-[family-name:var(--font-geist-sans)]">
             <nav className="mx-auto max-w-4/5 lg:w-1/2">
-                <div className="my-4 text-xl">
+                <div className="my-4 text-xl space-x-6">
                     <Link href="/" className="font-bold">M.</Link>
+                    <span className="space-x-4">
+                        <Link href="/diary" className="text-base">Diary</Link>
+                        <Link href="/#" className="text-base">Friends</Link>
+                        <Link href="https://github.com/Truimo" target="_blank" className="text-base">Github</Link>
+                    </span>
                 </div>
             </nav>
             <header className="font-normal static top-8">
