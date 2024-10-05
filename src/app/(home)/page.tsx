@@ -1,26 +1,11 @@
-import Image from 'next/image';
 import Link from 'next/link';
+import {Container, Footer, Nav, Header} from '@/components/layout/Home';
 
 export default function Home() {
     return (
-        <div className="font-[family-name:var(--font-geist-sans)]">
-            <nav className="mx-auto max-w-4/5 lg:w-1/2">
-                <div className="my-4 text-xl space-x-6">
-                    <Link href="/" className="font-bold">M.</Link>
-                    <span className="space-x-4">
-                        <Link href="/diary" className="text-base">Diary</Link>
-                        <Link href="/#" className="text-base">Friends</Link>
-                        <Link href="https://github.com/Truimo" target="_blank" className="text-base">Github</Link>
-                    </span>
-                </div>
-            </nav>
-            <header className="font-normal static top-8">
-                <div className="m-8 text-center">
-                    <Image src="/avatar.jpg" alt="avatar" height="96" width="96" className="rounded-full w-24 h-24 inline"></Image>
-                    <h1 className="text-2xl font-bold mx-auto my-5">Xiaomo Qian</h1>
-                    <p>Meeting you is the best of the best.</p>
-                </div>
-            </header>
+        <Container>
+            <Nav/>
+            <Header/>
             <main className="mx-auto max-w-4/5 lg:w-1/2">
                 <div className="grid grid-cols-1 gap-y-2 ">
                     <p>Hello, I&#39;m <span className="text-primary">QianXiaomo</span>. Nice to meet you!</p>
@@ -39,11 +24,7 @@ export default function Home() {
                     <p>Email: <Link href="mailto:hi@xdm.me">hi@xdm.me</Link></p>
                 </div>
             </main>
-            <footer>
-                <div className="m-8 text-center">
-                    <p>Copyright &copy; 2024 <Link href="https://github.com/Truimo" target="_blank">Truimo</Link>. All Rights Reserved.</p>
-                </div>
-            </footer>
-        </div>
+            <Footer/>
+        </Container>
     );
 }
