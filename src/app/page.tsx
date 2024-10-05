@@ -6,7 +6,7 @@ export default function Home() {
         <div className="font-[family-name:var(--font-geist-sans)]">
             <nav className="mx-auto max-w-4/5 lg:w-1/2">
                 <div className="my-4 text-xl">
-                    <Link href="/" className="font-bold">ME</Link>
+                    <Link href="/" className="font-bold">M.</Link>
                 </div>
             </nav>
             <header className="font-normal static top-8">
@@ -18,7 +18,7 @@ export default function Home() {
             </header>
             <main className="mx-auto max-w-4/5 lg:w-1/2">
                 <div className="grid grid-cols-1 gap-y-2 ">
-                    <p>Hello, I&#39;m QianXiaomo. Nice to meet you!</p>
+                    <p>Hello, I&#39;m <span className="text-primary">QianXiaomo</span>. Nice to meet you!</p>
                     <p>Full stack engineer.</p>
                     <p className="invisible">-</p>
                     <p>My slogan:</p>

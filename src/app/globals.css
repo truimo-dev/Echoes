@@ -33,4 +33,8 @@ body {
         color: var(--primary);
         text-decoration-line: underline;
     }
+
+    .text-primary {
+        color: var(--primary);
+    }
 }
