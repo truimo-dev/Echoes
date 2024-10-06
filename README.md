@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ME
 
-## Getting Started
+This is my homepage.
 
-First, run the development server:
+## Become friends with me
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+When you want to add a friend link, you can add your site information by modifying the `friends.ts` file in the repository. Here are some steps to help you complete this process:
+
+1. Find a file named friends.ts (or similar) in the repository, which contains the friend link information.
+
+2. Open the [`friends.ts`](https://github.com/Truimo/me/blob/main/src/constant/friends.ts#L8) file and locate an array or object used to store the friend link information. It might look something like this:
+
+```ts
+const friends: FriendItem[] = [
+    {
+        title: 'MiaoMint',
+        href: 'https://0u0.ren/',
+        icon: 'https://q1.qlogo.cn/g?b=qq&k=G1ibIlnicR8Ij4CZO3BF6cVA&s=640',
+        description: '喵薄荷',
+    },
+    //... ...
+]
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Add a new friend link entry to the array or object.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Make sure to provide the correct `title`, `href`, `icon`, and `description` to match the name and link of the friend link you want to add.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Then, commit your changes to the `friends.ts` file. You can do this by forking the repository and submitting a Pull Request (PR) to the repository.
 
-## Learn More
+Wait for your Pull Request to be reviewed and merged. I will review your changes and merge them into the repository once I confirm there are no issues.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+After completing the above steps, your friend link should be successfully added to my homepage. If you have any other questions, please feel free to ask me.
