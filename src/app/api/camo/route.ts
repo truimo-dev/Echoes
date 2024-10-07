@@ -16,7 +16,7 @@ function isImage(contentType: string | null): boolean {
 async function camoImage(imageUrl: string) {
     const headers: Record<string, string> = {
         'Content-Type': 'application/octet-stream',
-        'X-Type': 'application/octet-stream',
+        'X-Content-Type': 'application/octet-stream',
         'Cache-Control': 'public, max-age=604800, immutable'
     }
 
@@ -36,7 +36,7 @@ async function camoImage(imageUrl: string) {
             headers['Content-Length'] = b64Img.length.toString()
 
             if (typeof contentType === 'string') {
-                headers['X-Type'] = contentType
+                headers['X-Content-Type'] = contentType
             }
 
             return new Response(b64Img, {
@@ -50,7 +50,7 @@ async function camoImage(imageUrl: string) {
 
         return new Response(emptyB64, {
             headers: {
-                'X-Type': 'image/png',
+                'X-Content-Type': 'image/png',
                 'Content-Type': 'text/plain',
                 'Content-Length': emptyB64.length.toString()
             }
