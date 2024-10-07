@@ -1,8 +1,12 @@
 import type {Metadata, Viewport} from 'next';
 import {geistMono, geistSans} from '@/fonts';
+import {siteConfig} from '@/constant/site';
 
 export const metadata: Metadata = {
-    title: 'QianXiaomo',
+    title: {
+        default: siteConfig.title,
+        template: `%s - ${siteConfig.title}`
+    },
     description: 'This is QianXiaomo\'s website.',
     keywords: ['QianXiaomo', 'Xiaomo', '浅小沫', 'truimo', '小沫', '小白']
 };

@@ -3,6 +3,12 @@ import {Container, Nav} from '@/components/layout/Home';
 import {CamoImage} from '@/components/common/Image';
 import {friends} from '@/constant/friends';
 import type {FriendItem} from '@/constant/friends';
+import type {Metadata} from "next";
+
+export const metadata: Metadata = {
+    title: 'Friends',
+    description: 'There are friend Links.',
+};
 
 function Friend({ it }: {
     it: FriendItem
