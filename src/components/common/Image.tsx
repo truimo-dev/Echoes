@@ -6,12 +6,7 @@ import {useEffect, useState} from 'react';
 const transparentImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII='
 
 function base64ToBlob(data: string, contentType: string = 'application/octet-stream'): Blob {
-    const bytes = atob(data);
-    const byteLen = new Array(bytes.length);
-    for (let i = 0; i < bytes.length; i++) {
-        byteLen[i] = bytes.charCodeAt(i);
-    }
-    const byteArray = new Uint8Array(byteLen);
+    const byteArray = Uint8Array.from(atob(data), byte => byte.charCodeAt(0));
     return new Blob([byteArray], {type: contentType});
 }
 
