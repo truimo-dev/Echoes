@@ -38,10 +38,16 @@ export function Nav() {
 export function Header() {
     return (
         <header className="font-normal static top-8">
-            <div className="m-8 text-center">
-                <Image src="/avatar.jpg" alt="avatar" height="96" width="96" className="rounded-full w-24 h-24 inline aspect-square"></Image>
-                <h1 className="text-2xl font-bold mx-auto my-5">Xiaomo Qian</h1>
-                <p>Meeting you is the best of the best.</p>
+            <div className="my-8 mx-auto max-w-4/5 lg:w-1/2">
+                <div className="flex items-end gap-x-4">
+                    <div className="shrink-0">
+                        <Image src="/avatar.jpg" alt="avatar" height="96" width="96" className="rounded-full w-24 h-24 aspect-square"></Image>
+                    </div>
+                    <div>
+                        <h1 className="text-2xl font-bold my-2">Xiaomo Qian</h1>
+                        <p>Meeting you is the best of the best.</p>
+                    </div>
+                </div>
             </div>
         </header>
     )
