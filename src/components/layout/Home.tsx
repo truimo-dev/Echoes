@@ -1,8 +1,22 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import type {PropsWithChildren} from 'react';
+import type {ElementType, PropsWithChildren} from 'react';
 import clsx from 'clsx';
 import {geistSans} from '@/fonts';
+import {Component} from '@/components/common/Component';
+
+type BlockProps = PropsWithChildren<{
+    className?: string;
+    as?: ElementType;
+}>
+
+function Block(props: BlockProps) {
+    return (
+        <Component as={props.as} className={clsx('mx-auto max-w-4/5 lg:w-1/2', props.className)}>
+            {props.children}
+        </Component>
+    );
+}
 
 export function Container({children, className}: PropsWithChildren<{
     className?: string;
@@ -16,13 +30,13 @@ export function Content({children, className}: PropsWithChildren<{
     className?: string;
 }>) {
     return (
-        <div className={clsx('mx-auto max-w-4/5 lg:w-1/2', className)}>{children}</div>
+        <Block className={className}>{children}</Block>
     )
 }
 
 export function Nav() {
     return (
-        <nav className="mx-auto max-w-4/5 lg:w-1/2">
+        <Block as='nav'>
             <div className="my-4 text-xl space-x-6">
                 <Link href="/" className="font-bold">M.</Link>
                 <span className="space-x-4">
@@ -32,14 +46,14 @@ export function Nav() {
                     <Link href="https://github.com/Truimo" target="_blank" className="text-base">Github</Link>
                 </span>
             </div>
-        </nav>
+        </Block>
     )
 }
 
 export function Header() {
     return (
         <header className="font-normal static top-8">
-            <div className="my-8 mx-auto max-w-4/5 lg:w-1/2">
+            <Block className="my-8">
                 <div className="flex items-end gap-x-4">
                     <div className="shrink-0">
                         <Image src="/avatar.jpg" alt="avatar" height="96" width="96" className="rounded-full w-24 h-24 aspect-square"></Image>
@@ -49,7 +63,7 @@ export function Header() {
                         <p>Meeting you is the best of the best.</p>
                     </div>
                 </div>
-            </div>
+            </Block>
         </header>
     )
 }
