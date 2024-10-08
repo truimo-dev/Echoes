@@ -2,12 +2,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type {PropsWithChildren} from 'react';
 import clsx from 'clsx';
+import {geistSans} from '@/fonts';
 
 export function Container({children, className}: PropsWithChildren<{
     className?: string;
 }>) {
     return (
-        <div className={clsx('font-[family-name:var(--font-geist-sans)]', className)}>{children}</div>
+        <div className={clsx(geistSans.className, className)}>{children}</div>
     )
 }
 

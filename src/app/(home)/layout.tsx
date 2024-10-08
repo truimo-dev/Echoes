@@ -1,5 +1,4 @@
 import type {Metadata, Viewport} from 'next';
-import {geistMono, geistSans} from '@/fonts';
 import {siteConfig} from '@/constant/site';
 
 export const metadata: Metadata = {
@@ -27,7 +26,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <body className='antialiased'>
         <SayHi/>
         {children}
         </body>
