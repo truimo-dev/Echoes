@@ -12,6 +12,11 @@ const geistMono = localFont({
     weight: "100 900",
 });
 
+const iconfont = localFont({
+    src: './iconfont.ttf',
+    variable: '--font-icon',
+});
+
 export {
-    geistSans, geistMono
+    geistSans, geistMono, iconfont
 }
