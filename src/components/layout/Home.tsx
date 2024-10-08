@@ -10,7 +10,7 @@ type BlockProps = PropsWithChildren<{
     as?: ElementType;
 }>
 
-function Block(props: BlockProps) {
+export function Block(props: BlockProps) {
     return (
         <Component as={props.as} className={clsx('mx-auto max-w-4/5 lg:w-1/2', props.className)}>
             {props.children}

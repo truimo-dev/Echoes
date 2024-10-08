@@ -1,7 +1,9 @@
+import {Icon} from '@/components/common/Icon';
+
 export default function Page() {
     return (
-        <div className="diary">
-            Waiting for develop...
+        <div className="">
+            Waiting for develop... <Icon name='edit' />
         </div>
     );
 }
