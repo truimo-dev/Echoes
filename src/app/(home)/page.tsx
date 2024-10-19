@@ -22,7 +22,7 @@ export default function Home() {
                     </ol>
                     <p className="invisible">-</p>
                     <p>Contact:</p>
-                    <p>Email: <Link href="mailto:hi@xdm.me">hi@xdm.me</Link></p>
+                    <p>Email: <Link href="mailto:hi@xdm.me">hi@qxm.me</Link></p>
                 </div>
             </main>
             <Footer/>
