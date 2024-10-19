@@ -1,5 +1,6 @@
 import type {Metadata, Viewport} from 'next';
 import {siteConfig} from '@/constant/site';
+import {DeprecatedDomain} from '@/components/common/Client';
 
 export const metadata: Metadata = {
     title: {
@@ -27,8 +28,9 @@ export default function RootLayout({
     return (
         <html lang="en">
         <body className='antialiased'>
-        <SayHi/>
+        <DeprecatedDomain/>
         {children}
+        <SayHi/>
         </body>
         </html>
     );
