@@ -8,6 +8,9 @@ import type {Metadata} from "next";
 export const metadata: Metadata = {
     title: 'Friends',
     description: 'There are friend Links.',
+    alternates: {
+        canonical: 'https://www.qxm.me/friends',
+    }
 };
 
 function Friend({ it }: {

@@ -1,6 +1,13 @@
 import Link from 'next/link';
 import {Container, Footer, Nav, Header} from '@/components/layout/Home';
 import {geistMono} from '@/fonts';
+import type {Metadata} from 'next';
+
+export const metadata: Metadata = {
+    alternates: {
+        canonical: 'https://www.qxm.me',
+    }
+}
 
 export default function Home() {
     return (
