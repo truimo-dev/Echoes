@@ -16,8 +16,8 @@ export default function Home() {
             <Header/>
             <main className="mx-auto max-w-4/5 lg:w-1/2">
                 <div className="grid grid-cols-1 gap-y-2 ">
-                    <p>Hello, I&#39;m <span className="text-primary">QianXiaomo</span>. Nice to meet you!</p>
-                    <p>Full stack engineer.</p>
+                    <p>Hi.</p>
+                    <p>My name is QianXiaomo (<span className="text-primary">QXM</span>, for short). I’m a software developer.</p>
                     <p className="invisible">-</p>
                     <p>My slogan:</p>
                     <ol className={`list-inside list-disc text-sm ${geistMono.className}`}>
