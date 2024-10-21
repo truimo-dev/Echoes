@@ -1,5 +1,6 @@
 import type {NextRequest} from 'next/server';
 
+export const runtime = 'edge'
 export const fetchCache = 'default-cache'
 
 // const transparentImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII='
