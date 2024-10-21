@@ -4,6 +4,7 @@ import type {ElementType, PropsWithChildren} from 'react';
 import clsx from 'clsx';
 import {geistSans} from '@/fonts';
 import {Component} from '@/components/common/Component';
+import {Icon} from '@/components/common/Icon';
 
 type BlockProps = PropsWithChildren<{
     className?: string;
@@ -43,7 +44,7 @@ export function Nav() {
                     <Link href="/diary" className="text-base">Diary</Link>
                     <Link href="/#" className="text-base">Posts</Link>
                     <Link href="/friends" className="text-base">Friends</Link>
-                    <Link href="https://github.com/Truimo" target="_blank" className="text-base">Github</Link>
+                    <Link href="https://github.com/Truimo" target="_blank" className="text-base">Github&nbsp;<Icon name="link1"/></Link>
                 </span>
             </div>
         </Block>
