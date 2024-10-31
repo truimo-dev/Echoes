@@ -1,4 +1,8 @@
 import {NextRequest, NextResponse} from 'next/server';
+import {geolocation} from '@vercel/functions';
+import {env} from '~/env.mjs';
+import {kvKeys} from '@/constant/kv';
+import {redis} from '@/libs/redis';
 
 const isProd = process.env.NODE_ENV === 'production'
 
@@ -39,12 +43,22 @@ export const config = {
     ],
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function middleware(request: NextRequest) {
+async function middleware(request: NextRequest) {
     const csp = cspHeader.replace(/\s{2,}/g, ' ').trim()
 
     const response = NextResponse.next()
     response.headers.set('Content-Security-Policy', csp)
 
+    const geo = geolocation(request);
+    if (geo !== null && env.VERCEL_ENV === 'production') {
+        await redis.set(kvKeys.currentVisitor, {
+            country: geo.country,
+            city: geo.city,
+            flag: geo.flag,
+        })
+    }
+
     return response
 }
+
+export default middleware;

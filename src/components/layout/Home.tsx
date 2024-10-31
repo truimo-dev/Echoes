@@ -1,3 +1,4 @@
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import type {ElementType, PropsWithChildren} from 'react';
@@ -5,9 +6,7 @@ import clsx from 'clsx';
 import {geistSans} from '@/fonts';
 import {Component} from '@/components/common/Component';
 import {Icon} from '@/components/common/Icon';
-import {kvKeys} from '@/constant/kv';
-import {redis} from '@/libs/redis';
-import {env} from '~/env.mjs';
+import {LastVisitorInfo, TotalPageViews} from "@/components/common/Footer";
 
 type BlockProps = PropsWithChildren<{
     className?: string;
@@ -73,14 +72,20 @@ export function Header() {
 }
 
 export async function Footer() {
-    if (env.VERCEL_ENV === 'production') {
-        await redis.incr(kvKeys.totalViews)
-    }
     return (
         <footer>
             <div className="m-8 text-center">
                 <p>Copyright &copy; 2024 <Link href="https://github.com/Truimo" target="_blank">Truimo</Link>. All
                     Rights Reserved.</p>
+                <p>
+                    <React.Suspense>
+                        <TotalPageViews/>
+                    </React.Suspense>
+                    <span>&nbsp;</span>
+                    <React.Suspense>
+                        <LastVisitorInfo/>
+                    </React.Suspense>
+                </p>
             </div>
         </footer>
     )
