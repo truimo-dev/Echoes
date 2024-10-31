@@ -1,7 +1,10 @@
 import type {NextRequest} from 'next/server';
+import {rateLimit} from '@/libs/redis';
+import {ipAddress} from '@vercel/functions';
 
 export const runtime = 'edge'
-export const fetchCache = 'default-cache'
+// export const fetchCache = 'default-cache'
+export const revalidate = 86400
 
 // const transparentImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII='
 
@@ -28,6 +31,7 @@ async function camoImage(imageUrl: string) {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
                 'Referer': url.origin
             },
+            cache: 'force-cache',
         })
         const buffer = await res.arrayBuffer()
         const contentType = res.headers.get('Content-Type')
@@ -35,10 +39,7 @@ async function camoImage(imageUrl: string) {
             const b64Img = Buffer.from(buffer).toString('base64')
             headers['Content-Type'] = 'text/plain'
             headers['Content-Length'] = b64Img.length.toString()
-
-            if (typeof contentType === 'string') {
-                headers['X-Content-Type'] = contentType
-            }
+            headers['X-Content-Type'] = contentType!
 
             return new Response(b64Img, {
                 headers: headers
@@ -60,7 +61,12 @@ async function camoImage(imageUrl: string) {
 }
 
 export async function POST(request: NextRequest) {
-    const { src } = await request.json()
+    const { src } = await request.json(), ip = ipAddress(request);
+
+    const { success } = await rateLimit.limit(`camo_${ip ?? ''}`)
+    if (!success) {
+        return Response.json({error: 'Rate limit exceeded'}, {status: 429})
+    }
 
     if (typeof src === 'string') {
         return camoImage(src)

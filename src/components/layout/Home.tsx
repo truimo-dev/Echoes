@@ -5,6 +5,9 @@ import clsx from 'clsx';
 import {geistSans} from '@/fonts';
 import {Component} from '@/components/common/Component';
 import {Icon} from '@/components/common/Icon';
+import {kvKeys} from '@/constant/kv';
+import {redis} from '@/libs/redis';
+import {env} from '~/env.mjs';
 
 type BlockProps = PropsWithChildren<{
     className?: string;
@@ -69,7 +72,10 @@ export function Header() {
     )
 }
 
-export function Footer() {
+export async function Footer() {
+    if (env.VERCEL_ENV === 'production') {
+        await redis.incr(kvKeys.totalViews)
+    }
     return (
         <footer>
             <div className="m-8 text-center">
