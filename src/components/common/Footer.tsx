@@ -36,13 +36,14 @@ async function LastVisitorInfo() {
     if (!lastVisitor) {
         lastVisitor = {
             country: 'US',
+            city: 'New York',
             flag: '🇺🇸',
         }
     }
 
     return (
         <span>
-            <span><Icon name="favor"/>&nbsp;Recent visitors have come from the United States&nbsp;</span>
+            <span><Icon name="favor"/>&nbsp;Recent visitors have come from {[lastVisitor.city, lastVisitor.country].filter(Boolean).join(', ')}&nbsp;</span>
             <span className="font-medium">{lastVisitor.flag}</span>
         </span>
     )
