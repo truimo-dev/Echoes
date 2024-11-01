@@ -1,6 +1,8 @@
 'use client';
 
 import {useEffect, useState} from 'react';
+import {Simulate} from "react-dom/test-utils";
+import error = Simulate.error;
 // import clsx from 'clsx';
 
 const transparentImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII='
@@ -72,14 +74,14 @@ export function CamoImage({ src, alt, className }: CamoImageProps) {
     const [url, setUrl] = useState<string>(transparentImage);
 
     useEffect(() => {
-        const data = { src }
-        const online = getCamoCache(data);
+        const data = { src };
 
-        Promise.race([
-            online,
-            online.catch(() => getCamoOnline(data))
-        ]).then((data: CamoData) => {
+        getCamoCache(data).catch(() => {
+            return getCamoOnline(data)
+        }).then((data: CamoData) => {
             setUrl(getObjectURL(data));
+        }).catch((error) => {
+            console.error(error);
         });
 
         return () => {
