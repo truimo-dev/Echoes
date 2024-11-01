@@ -16,35 +16,71 @@ interface CamoImageProps {
     className?: string
 }
 
+interface CamoData {
+    type: string
+    content: string
+}
+
+interface CamoBody {
+    src: string
+}
+
+function getCamoOnline(body: CamoBody): Promise<CamoData> {
+    return fetch('/api/camo', {
+        method: 'POST',
+        body: JSON.stringify(body),
+    }).then((response: Response) => {
+        const headers = response.headers;
+        const type: string = headers.has('X-Content-Type') ? headers.get('X-Content-Type')! : 'application/octet-stream';
+        return new Promise<CamoData>((resolve, reject) => {
+            response.text().then((data: string) => {
+                const res = {type, content: data};
+                if ('sessionStorage' in window) {
+                    window.sessionStorage.setItem(`camo_${body.src}`, JSON.stringify(res));
+                }
+                resolve(res);
+            }).catch(reject);
+        });
+    });
+}
+
+function getCamoCache(body: CamoBody): Promise<CamoData> {
+    return new Promise((resolve, reject) => {
+        if ('sessionStorage' in window) {
+            const item = window.sessionStorage.getItem(`camo_${body.src}`);
+            if (item) {
+                try {
+                    resolve(JSON.parse(item));
+                } catch (e) {
+                    reject(e);
+                }
+            } else {
+                reject(new Error('No Camo cache'));
+            }
+        } else {
+            reject(new Error('No session storage'));
+        }
+    });
+}
+
+function getObjectURL(data: CamoData): string {
+    const blob = base64ToBlob(data.content, data.type);
+    return  URL.createObjectURL(blob);
+}
+
 export function CamoImage({ src, alt, className }: CamoImageProps) {
     const [url, setUrl] = useState<string>(transparentImage);
 
     useEffect(() => {
         const data = { src }
-        fetch('/api/camo', {
-            method: 'POST',
-            body: JSON.stringify(data),
-        }).then((response: Response) => {
-            const headers = response.headers;
-            const type: string = headers.has('X-Content-Type') ? headers.get('X-Content-Type')! : 'application/octet-stream';
-            return new Promise<{
-                type: string,
-                content: string,
-            }>((resolve, reject) => {
-                response.text().then((data: string) => {
-                    resolve({
-                        type, content: data,
-                    })
-                }).catch(reject)
-            })
-        }).then((data: {
-            type: string,
-            content: string
-        }) => {
-            const blob = base64ToBlob(data.content, data.type)
-            const url = URL.createObjectURL(blob);
-            setUrl(url);
-        })
+        const online = getCamoCache(data);
+
+        Promise.race([
+            online,
+            online.catch(() => getCamoOnline(data))
+        ]).then((data: CamoData) => {
+            setUrl(getObjectURL(data));
+        });
 
         return () => {
             URL.revokeObjectURL(url);
