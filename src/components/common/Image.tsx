@@ -1,8 +1,6 @@
 'use client';
 
 import {useEffect, useState} from 'react';
-import {Simulate} from "react-dom/test-utils";
-import error = Simulate.error;
 // import clsx from 'clsx';
 
 const transparentImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII='
