@@ -31,3 +31,9 @@ Then, commit your changes to the `friends.ts` file. You can do this by forking t
 Wait for your Pull Request to be reviewed and merged. I will review your changes and merge them into the repository once I confirm there are no issues.
 
 After completing the above steps, your friend link should be successfully added to my homepage. If you have any other questions, please feel free to ask me.
+
+## Sanity
+
+```shell
+npm create sanity@latest -- --project Project-ID --dataset production --template clean
+```
