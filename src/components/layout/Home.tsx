@@ -40,7 +40,7 @@ export function Content({children, className}: PropsWithChildren<{
 export function Nav() {
     return (
         <Block as='nav'>
-            <div className="my-4 text-xl space-x-6">
+            <div className="py-4 text-xl space-x-6">
                 <Link href="/" className="font-bold">M.</Link>
                 <span className="space-x-4">
                     <Link href="/diary" className="text-base">Diary</Link>
