@@ -1,6 +1,7 @@
 import type {Metadata, Viewport} from 'next';
 import {siteConfig} from '@/constant/site';
 import {DeprecatedDomain} from '@/components/common/Client';
+import {Theme} from '@radix-ui/themes';
 
 export const metadata: Metadata = {
     title: {
@@ -26,13 +27,11 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
-        <body className='antialiased'>
-        <DeprecatedDomain/>
-        {children}
-        <SayHi/>
-        </body>
-        </html>
+        <Theme>
+            <DeprecatedDomain/>
+            {children}
+            <SayHi/>
+        </Theme>
     );
 }
 
