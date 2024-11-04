@@ -27,7 +27,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <Theme>
+        <Theme accentColor="sky">
             <DeprecatedDomain/>
             {children}
             <SayHi/>

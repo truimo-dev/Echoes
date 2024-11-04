@@ -28,12 +28,7 @@ body {
     }
 }
 
-@layer base {
-    a:hover, a:active {
-        color: var(--primary);
-        text-decoration-line: underline;
-    }
-
+@layer custom {
     .text-primary {
         color: var(--primary);
     }
