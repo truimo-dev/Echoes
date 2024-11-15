@@ -5,14 +5,12 @@
 :root {
     --background: #ffffff;
     --foreground: #171717;
-    --primary: #0ea5e9;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
         --background: #0a0a0a;
         --foreground: #ededed;
-        --primary: #0a86c0;
     }
 }
 
@@ -28,8 +26,8 @@ body {
     }
 }
 
-@layer custom {
+@layer theme {
     .text-primary {
-        color: var(--primary);
+        color: rgba(var(--color-primary), 1);
     }
 }

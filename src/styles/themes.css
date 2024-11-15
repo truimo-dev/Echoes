@@ -1,5 +1,4 @@
 .theme-1 {
-    opacity: 1;
     --color-primary-1: 230, 239, 247;
     --color-primary-2: 183, 208, 232;
     --color-primary-3: 141, 179, 217;
@@ -13,11 +12,9 @@
     --color-primary: 69, 124, 186;
     --color-primary-text: 103, 150, 201;
     --color-primary-shadow: 230, 239, 247;
-    transition: opacity .5s ease-in-out .3s
 }
 
 .dark .theme-1 {
-    opacity: 1;
     --color-primary-1: 10, 15, 23;
     --color-primary-2: 21, 31, 46;
     --color-primary-3: 33, 48, 69;
@@ -34,7 +31,6 @@
 }
 
 .theme-2 {
-    opacity: 1;
     --color-primary-1: 255, 228, 222;
     --color-primary-2: 242, 189, 177;
     --color-primary-3: 227, 149, 134;
@@ -48,11 +44,9 @@
     --color-primary: 196, 79, 61;
     --color-primary-text: 212, 113, 95;
     --color-primary-shadow: 255, 228, 222;
-    transition: opacity .5s ease-in-out .3s
 }
 
 .dark .theme-2 {
-    opacity: 1;
     --color-primary-1: 23, 10, 10;
     --color-primary-2: 46, 21, 19;
     --color-primary-3: 69, 34, 30;
@@ -67,3 +61,4 @@
     --color-primary-text: 161, 116, 108;
     --color-primary-shadow: 69, 34, 30
 }
+

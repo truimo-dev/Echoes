@@ -6,7 +6,7 @@ import {ThemeProvider} from "next-themes";
 export default async function RootLayout({children}: PropsWithChildren) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className="antialiased">
+            <body className="antialiased theme-1">
                 <ThemeProvider attribute="class">
                     {children}
                 </ThemeProvider>
