@@ -4,6 +4,7 @@ const config: Config = {
     content: [
         './src/**/*.{js,jsx,ts,tsx}',
     ],
+    darkMode: 'selector',
     theme: {
         extend: {
             colors: {
