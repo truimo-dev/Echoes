@@ -1,6 +1,7 @@
 'use client';
 
 import {useEffect} from 'react';
+import {Text} from '@radix-ui/themes';
 
 export default function GlobalError({ error }: {
     error: Error & { digest?: string }
@@ -12,10 +13,10 @@ export default function GlobalError({ error }: {
 
     return (
         <div className="grid justify-items-end h-screen place-content-center px-4 gap-2">
-            <h1 className="uppercase tracking-widest text-gray-600 dark:text-gray-200">Service issues occurred</h1>
-            <p className="text-gray-500 dark:text-gray-300">
+            <Text as="p" className="uppercase tracking-widest">Service issues occurred</Text>
+            <Text as="p">
                 <button className="btn" onClick={() => location.reload()}>Retry</button>
-            </p>
+            </Text>
         </div>
     );
 }
