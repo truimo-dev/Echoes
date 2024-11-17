@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import {geistSans} from '@/fonts';
 import {Component} from '@/components/common/Component';
 import {Icon} from '@/components/common/Icon';
-import {LastVisitorInfo, TotalPageViews} from "@/components/common/Footer";
+import {LastVisitorInfo, TotalPageViews} from '@/components/common/Footer';
 
 type BlockProps = PropsWithChildren<{
     className?: string;
@@ -78,15 +78,21 @@ export async function Footer() {
                 <p>Copyright &copy; 2024 <Link href="https://github.com/Truimo" target="_blank">Truimo</Link>. All
                     Rights Reserved.</p>
                 <p>
-                    <Suspense>
+                    <Suspense fallback={<Fallback/>}>
                         <TotalPageViews/>
                     </Suspense>
                     <span>&nbsp;</span>
-                    <Suspense>
+                    <Suspense fallback={<Fallback/>}>
                         <LastVisitorInfo/>
                     </Suspense>
                 </p>
             </div>
         </footer>
+    )
+}
+
+function Fallback() {
+    return (
+        <span>Data load error.</span>
     )
 }
