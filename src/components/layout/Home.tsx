@@ -1,4 +1,4 @@
-import React from 'react';
+import {Suspense} from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import type {ElementType, PropsWithChildren} from 'react';
@@ -78,13 +78,13 @@ export async function Footer() {
                 <p>Copyright &copy; 2024 <Link href="https://github.com/Truimo" target="_blank">Truimo</Link>. All
                     Rights Reserved.</p>
                 <p>
-                    <React.Suspense>
+                    <Suspense>
                         <TotalPageViews/>
-                    </React.Suspense>
+                    </Suspense>
                     <span>&nbsp;</span>
-                    <React.Suspense>
+                    <Suspense>
                         <LastVisitorInfo/>
-                    </React.Suspense>
+                    </Suspense>
                 </p>
             </div>
         </footer>
