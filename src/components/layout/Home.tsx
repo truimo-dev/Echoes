@@ -78,21 +78,15 @@ export async function Footer() {
                 <p>Copyright &copy; 2024 <Link href="https://github.com/Truimo" target="_blank">Truimo</Link>. All
                     Rights Reserved.</p>
                 <p>
-                    <Suspense fallback={<Fallback/>}>
+                    <Suspense>
                         <TotalPageViews/>
                     </Suspense>
                     <span>&nbsp;</span>
-                    <Suspense fallback={<Fallback/>}>
+                    <Suspense>
                         <LastVisitorInfo/>
                     </Suspense>
                 </p>
             </div>
         </footer>
-    )
-}
-
-function Fallback() {
-    return (
-        <span>Data load error.</span>
     )
 }
