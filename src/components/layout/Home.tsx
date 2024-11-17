@@ -1,12 +1,13 @@
 import {Suspense} from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
 import type {ElementType, PropsWithChildren} from 'react';
 import clsx from 'clsx';
 import {geistSans} from '@/fonts';
 import {Component} from '@/components/common/Component';
-import {Icon} from '@/components/common/Icon';
 import {LastVisitorInfo, TotalPageViews} from '@/components/common/Footer';
+import {GitHubLogoIcon} from '@radix-ui/react-icons';
+import {Link} from '@/components/ui/Link';
+import {Box, Text} from '@radix-ui/themes';
 
 type BlockProps = PropsWithChildren<{
     className?: string;
@@ -40,15 +41,19 @@ export function Content({children, className}: PropsWithChildren<{
 export function Nav() {
     return (
         <Block as='nav'>
-            <div className="py-4 text-xl space-x-6">
-                <Link href="/" className="font-bold">M.</Link>
+            <Box py="4" className="space-x-6">
+                <Link href="/">
+                    <Text size="5" weight="bold">M.</Text>
+                </Link>
                 <span className="space-x-4">
-                    <Link href="/diary" className="text-base">Diary</Link>
-                    <Link href="/#" className="text-base">Posts</Link>
-                    <Link href="/friends" className="text-base">Friends</Link>
-                    <Link href="https://github.com/Truimo" target="_blank" className="text-base">Github&nbsp;<Icon name="link1"/></Link>
+                    <Link href="/diary">Diary</Link>
+                    <Link href="/#">Posts</Link>
+                    <Link href="/friends">Friends</Link>
+                    <Link href="https://github.com/Truimo" target="_blank">
+                        <GitHubLogoIcon />&nbsp;Github
+                    </Link>
                 </span>
-            </div>
+            </Box>
         </Block>
     )
 }

@@ -31,3 +31,7 @@ body {
         color: rgba(var(--color-primary), 1);
     }
 }
+
+p svg, span svg {
+    display: initial;
+}
