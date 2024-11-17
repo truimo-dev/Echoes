@@ -9,8 +9,6 @@ export const metadata: Metadata = {
     }
 }
 
-export const experimental_ppr = true
-
 export default function Home() {
     return (
         <Container>
