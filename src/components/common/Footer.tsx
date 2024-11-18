@@ -1,3 +1,4 @@
+import {unstable_after as after} from 'next/server';
 import {kvKeys} from '@/constant/kv';
 import {redis} from '@/libs/redis';
 import {env} from '~/env.mjs';
@@ -30,7 +31,10 @@ async function LastVisitorInfo() {
             kvKeys.currentVisitor
         )
         lastVisitor = lv
-        await redis.set(kvKeys.lastVisitor, cv)
+
+        after(async () => {
+            await redis.set(kvKeys.lastVisitor, cv)
+        })
     }
 
     if (!lastVisitor) {
