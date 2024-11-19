@@ -64,7 +64,7 @@ export function Header() {
             <Block className="my-8">
                 <div className="flex items-end gap-x-4">
                     <div className="shrink-0">
-                        <Image src="/avatar.jpg" alt="avatar" height="96" width="96" className="rounded-full w-24 h-24 aspect-square"></Image>
+                        <Image src="/avatar.jpg" alt="avatar" height="96" width="96" className="rounded-full w-24 h-24 aspect-square" priority></Image>
                     </div>
                     <div>
                         <h1 className="text-2xl font-bold my-2">Xiaomo Qian</h1>
