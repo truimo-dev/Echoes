@@ -1,7 +1,7 @@
-import Link from 'next/link';
 import {Container, Footer, Nav, Header} from '@/components/layout/Home';
 import {geistMono} from '@/fonts';
 import type {Metadata} from 'next';
+import {Link} from '@/components/ui/Link';
 
 export const metadata: Metadata = {
     alternates: {
