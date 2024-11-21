@@ -26,7 +26,7 @@ function Friend({ it }: {
 export default function Friends() {
     return (
         <div className="mx-auto max-w-3xl">
-            <section className="mx-4">
+            <section className="mx-4 select-none">
                 <h1 className="text-2xl font-bold">Friends</h1>
                 <h3>You can visit my friends&#39; websites. <Link className="underline" href="https://github.com/Truimo/me?tab=readme-ov-file#become-friends-with-me" target="_blank">Become friends</Link> with me.</h3>
                 <div className="space-x-6 my-4">
