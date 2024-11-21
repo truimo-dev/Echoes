@@ -35,3 +35,7 @@ body {
 p svg, span svg {
     display: initial;
 }
+
+.fill-content {
+    min-height: calc(100vh - 12rem);
+}

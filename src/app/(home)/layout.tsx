@@ -3,6 +3,7 @@ import {ReactNode, Suspense} from 'react'
 import {siteConfig} from '@/constant/site';
 import {DeprecatedDomain} from '@/components/common/Client';
 import {Theme} from '@radix-ui/themes';
+import {Home} from '@/components/layout/Home';
 
 export const metadata: Metadata = {
     title: {
@@ -34,7 +35,7 @@ export default function RootLayout({
             <Suspense>
                 <DeprecatedDomain/>
             </Suspense>
-            {children}
+            <Home>{children}</Home>
             <SayHi/>
         </Theme>
     );

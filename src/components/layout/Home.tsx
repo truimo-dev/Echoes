@@ -1,13 +1,11 @@
 import {Suspense} from 'react';
-import Image from 'next/image';
 import type {ElementType, PropsWithChildren} from 'react';
 import clsx from 'clsx';
 import {geistSans} from '@/fonts';
 import {Component} from '@/components/common/Component';
 import {LastVisitorInfo, TotalPageViews} from '@/components/common/Footer';
 import {GitHubLogoIcon} from '@radix-ui/react-icons';
-import {Link} from '@/components/ui/Link';
-import {Box, Text} from '@radix-ui/themes';
+import {Link} from '@/components/ui/link';
 
 type BlockProps = PropsWithChildren<{
     className?: string;
@@ -38,45 +36,25 @@ export function Content({children, className}: PropsWithChildren<{
     )
 }
 
-export function Nav() {
+function Header() {
     return (
-        <Block as='nav'>
-            <Box py="4" className="space-x-6">
-                <Link href="/">
-                    <Text size="5" weight="bold">M.</Text>
-                </Link>
+        <header>
+            <div className="mx-auto space-x-6 py-4 px-8 max-w-7xl">
+                <Link href="/" className="font-bold text-xl">M.</Link>
                 <span className="space-x-4">
                     <Link href="/diary">Diary</Link>
-                    <Link href="/#">Posts</Link>
+                    <Link href="#">Posts</Link>
                     <Link href="/friends">Friends</Link>
                     <Link href="https://github.com/Truimo" target="_blank">
-                        <GitHubLogoIcon />&nbsp;Github
+                        <GitHubLogoIcon/>&nbsp;Github
                     </Link>
                 </span>
-            </Box>
-        </Block>
-    )
-}
-
-export function Header() {
-    return (
-        <header className="font-normal static top-8">
-            <Block className="my-8">
-                <div className="flex items-end gap-x-4">
-                    <div className="shrink-0">
-                        <Image src="/avatar.jpg" alt="avatar" height="96" width="96" className="rounded-full w-24 h-24 aspect-square" priority></Image>
-                    </div>
-                    <div>
-                        <h1 className="text-2xl font-bold my-2">Xiaomo Qian</h1>
-                        <p>Meeting you is the best of the best.</p>
-                    </div>
-                </div>
-            </Block>
+            </div>
         </header>
     )
 }
 
-export async function Footer() {
+function Footer() {
     return (
         <footer>
             <div className="m-8 text-center">
@@ -93,5 +71,17 @@ export async function Footer() {
                 </p>
             </div>
         </footer>
+    )
+}
+
+export function Home(props: PropsWithChildren) {
+    return (
+        <>
+            <Header/>
+            <main className="fill-content mx-4">
+                {props.children}
+            </main>
+            <Footer/>
+        </>
     )
 }

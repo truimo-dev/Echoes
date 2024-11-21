@@ -1,0 +1,7 @@
+.link {
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-thickness: min(2px, max(1px, .05em));
+    text-underline-offset: calc(.025em + 2px);
+    text-decoration-color: color-mix(in oklab, color(display-p3 .008 .008 .165 / .15), color(display-p3 .008 .008 .165 / .15));
+}
