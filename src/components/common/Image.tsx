@@ -35,8 +35,8 @@ function getCamoOnline(body: CamoBody): Promise<CamoData> {
         return new Promise<CamoData>((resolve, reject) => {
             response.text().then((data: string) => {
                 const res = {type, content: data};
-                if ('sessionStorage' in window) {
-                    window.sessionStorage.setItem(`camo_${body.src}`, JSON.stringify(res));
+                if ('localStorage' in window) {
+                    window.localStorage.setItem(`camo_${body.src}`, JSON.stringify(res));
                 }
                 resolve(res);
             }).catch(reject);
@@ -46,8 +46,8 @@ function getCamoOnline(body: CamoBody): Promise<CamoData> {
 
 function getCamoCache(body: CamoBody): Promise<CamoData> {
     return new Promise((resolve, reject) => {
-        if ('sessionStorage' in window) {
-            const item = window.sessionStorage.getItem(`camo_${body.src}`);
+        if ('localStorage' in window) {
+            const item = window.localStorage.getItem(`camo_${body.src}`);
             if (item) {
                 try {
                     resolve(JSON.parse(item));
