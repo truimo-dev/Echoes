@@ -2,7 +2,7 @@ import {unstable_after as after} from 'next/server';
 import {kvKeys} from '@/constant/kv';
 import {redis} from '@/libs/redis';
 import {env} from '~/env.mjs';
-import {Icon} from '@/components/common/Icon';
+import {Icon} from '@/components/ui/icon';
 
 async function TotalPageViews() {
     let views: number

@@ -1,4 +1,4 @@
-import {Icon} from '@/components/common/Icon';
+import {Icon} from '@/components/ui/icon';
 import type {Metadata} from 'next';
 
 export const metadata: Metadata = {
