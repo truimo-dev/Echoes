@@ -10,7 +10,7 @@ const cspHeader = isProd ? `
     default-src 'self';
     script-src 'self' 'unsafe-inline';
     style-src 'self' 'unsafe-inline';
-    img-src 'self' blob: data:;
+    img-src 'self' https://shp.qpic.cn blob: data:;
     font-src 'self';
     object-src 'none';
     base-uri 'self';
