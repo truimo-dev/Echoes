@@ -7,12 +7,11 @@ const server = z.object({
     VERCEL_ENV: z.enum(['development', 'preview', 'production']).default('development'),
     UPSTASH_REDIS_REST_URL: z.string().min(1),
     UPSTASH_REDIS_REST_TOKEN: z.string().min(1),
+    NOTION_KEY: z.string().min(1),
+    NOTION_DIARY_DATABASE_ID: z.string().min(1),
 });
 
 const client = z.object({
-    NEXT_PUBLIC_SANITY_PROJECT_ID: z.string().min(1),
-    NEXT_PUBLIC_SANITY_DATASET: z.string().min(1),
-    NEXT_PUBLIC_SANITY_USE_CDN: z.boolean(),
 });
 
 /**
@@ -25,9 +24,8 @@ const processEnv = {
     VERCEL_ENV: process.env.VERCEL_ENV,
     UPSTASH_REDIS_REST_URL: process.env.UPSTASH_REDIS_REST_URL,
     UPSTASH_REDIS_REST_TOKEN: process.env.UPSTASH_REDIS_REST_TOKEN,
-    NEXT_PUBLIC_SANITY_PROJECT_ID: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-    NEXT_PUBLIC_SANITY_DATASET: process.env.NEXT_PUBLIC_SANITY_DATASET,
-    NEXT_PUBLIC_SANITY_USE_CDN: process.env.NEXT_PUBLIC_SANITY_USE_CDN === 'true',
+    NOTION_KEY: process.env.NOTION_KEY,
+    NOTION_DIARY_DATABASE_ID: process.env.NOTION_DIARY_DATABASE_ID,
 }
 
 // Don't touch the part below
