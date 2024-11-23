@@ -8,7 +8,14 @@ const nextConfig: NextConfig = {
             compilationMode: 'annotation',
         },
         after: true,
-    }
+    },
+    images: {
+        remotePatterns: [
+            {
+                hostname: 'shp.qpic.cn',
+            },
+        ],
+    },
 };
 
 export default nextConfig;

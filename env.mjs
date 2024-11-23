@@ -9,6 +9,7 @@ const server = z.object({
     UPSTASH_REDIS_REST_TOKEN: z.string().min(1),
     NOTION_KEY: z.string().min(1),
     NOTION_DIARY_DATABASE_ID: z.string().min(1),
+    NOTION_IMAGES_DATABASE_ID: z.string().min(1),
 });
 
 const client = z.object({
@@ -26,6 +27,7 @@ const processEnv = {
     UPSTASH_REDIS_REST_TOKEN: process.env.UPSTASH_REDIS_REST_TOKEN,
     NOTION_KEY: process.env.NOTION_KEY,
     NOTION_DIARY_DATABASE_ID: process.env.NOTION_DIARY_DATABASE_ID,
+    NOTION_IMAGES_DATABASE_ID: process.env.NOTION_IMAGES_DATABASE_ID,
 }
 
 // Don't touch the part below
