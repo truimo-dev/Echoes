@@ -46,10 +46,15 @@ export default async function Page(props: {
         return notFound()
     }
 
+    const title = `Diary #${diary.title.length > 0 ? diary.title : diary.name}`
+
     return (
         <div className="mx-auto max-w-3xl">
+            <div className="mx-4">
+                <p className="text-2xl font-bold">{title}</p>
+            </div>
             <div className="select-none mx-4">
-                <DiaryDetail diary={diary} />
+                <DiaryDetail diary={diary}/>
             </div>
         </div>
     )

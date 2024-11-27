@@ -11,7 +11,7 @@ interface DiaryDetailProps {
 function DiaryDetail({diary}: DiaryDetailProps) {
     if ('words' === diary.type) {
         return (
-            <article className="border rounded-xl p-3.5 w-[fit-content] max-w-full">
+            <article>
                 <Suspense>
                     <DiaryImages images={diary.images}/>
                 </Suspense>
