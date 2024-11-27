@@ -21,7 +21,7 @@ export default async function Page() {
                 <p className="text-2xl font-bold">Latest Posts💫</p>
             </div>
             <div className="select-none mx-4 mt-4">
-                    <DiaryList list={list}/>
+                <DiaryList list={list}/>
             </div>
         </div>
     );
