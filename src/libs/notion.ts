@@ -78,6 +78,31 @@ async function queryDiaryList(query?: ListQuery): Promise<DiaryItem[]> {
     return list
 }
 
+async function queryDiary(slug: string): Promise<DiaryItem | null> {
+    const dbQuery: QueryDatabaseParameters = {
+        database_id: env.NOTION_DIARY_DATABASE_ID,
+        filter: {
+            and: [
+                {property: 'Published', checkbox: {equals: true}},
+                {property: 'Name', rich_text: {equals: slug}}
+            ]
+        },
+        page_size: 1,
+    }
+
+    const response: QueryDatabaseResponse = await notion.databases.query(dbQuery)
+
+    if ('list' === response.object) {
+        for (const page of response.results) {
+            if (isFullPageOrDatabase(page) && 'page' === page.object) {
+                return getDiaryFromQuery(page)
+            }
+        }
+    }
+
+    return null
+}
+
 
 function getDiaryFromQuery(page: PageObjectResponse): DiaryItem {
     const properties = page.properties
@@ -324,5 +349,5 @@ async function getImageInfo(href: string): Promise<ImageInfo> {
 }
 
 export {
-    queryDiaryList, queryBlockList, getImageInfo
+    queryDiaryList, queryBlockList, getImageInfo, queryDiary
 }
