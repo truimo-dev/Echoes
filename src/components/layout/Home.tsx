@@ -4,8 +4,8 @@ import clsx from 'clsx';
 import {geistSans} from '@/fonts';
 import {Component} from '@/components/common/Component';
 import {LastVisitorInfo, TotalPageViews} from '@/components/common/Footer';
-import {GitHubLogoIcon} from '@radix-ui/react-icons';
 import {Link} from '@/components/ui/link';
+import {GitHubIcon} from '@/assets';
 
 type BlockProps = PropsWithChildren<{
     className?: string;
@@ -46,7 +46,7 @@ function Header() {
                     <Link href="#">Posts</Link>
                     <Link href="/friends">Friends</Link>
                     <Link href="https://github.com/Truimo" target="_blank">
-                        <GitHubLogoIcon/>&nbsp;Github
+                        <GitHubIcon/>&nbsp;Github
                     </Link>
                 </span>
             </div>

@@ -2,7 +2,6 @@ import type {Metadata, Viewport} from 'next';
 import {ReactNode, Suspense} from 'react'
 import {siteConfig} from '@/constant/site';
 import {DeprecatedDomain} from '@/components/common/Client';
-import {Theme} from '@radix-ui/themes';
 import {Home} from '@/components/layout/Home';
 
 export const metadata: Metadata = {
@@ -31,13 +30,13 @@ export default function RootLayout({
     children: ReactNode;
 }>) {
     return (
-        <Theme accentColor='sky'>
+        <>
             <Suspense>
                 <DeprecatedDomain/>
             </Suspense>
             <Home>{children}</Home>
             <SayHi/>
-        </Theme>
+        </>
     );
 }
 

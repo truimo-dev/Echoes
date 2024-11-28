@@ -1,9 +1,7 @@
 'use client'
 
 import {useEffect, useState} from 'react'
-import NextLink from 'next/link';
-import {Callout, Link} from '@radix-ui/themes';
-import {InfoCircledIcon} from '@radix-ui/react-icons';
+import {Link} from '@/components/ui/link'
 
 function useHostname(): string {
     const [hostname, setHostname] = useState<string>('')
@@ -32,16 +30,7 @@ export function DeprecatedDomain() {
 
     return (
         <div className="mx-auto pt-4 max-w-4/5 lg:w-1/2 text-center">
-            <Callout.Root color="orange" variant="surface">
-                <Callout.Icon>
-                    <InfoCircledIcon/>
-                </Callout.Icon>
-                <Callout.Text>
-                    This domain will be deprecated soon, please visit <Link asChild={true} href="#">
-                    <NextLink href="https://www.qxm.me/" target="_self">QXM.ME</NextLink>
-                </Link>.
-                </Callout.Text>
-            </Callout.Root>
+            <p className="text-amber-600 dark:text-amber-400">This domain will be deprecated soon, please visit <Link href="https://www.qxm.me/" target="_self">QXM.ME</Link>.</p>
             <script dangerouslySetInnerHTML={{__html: autoRedirectScript}}></script>
         </div>
     )
