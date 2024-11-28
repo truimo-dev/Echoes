@@ -5,3 +5,9 @@
     text-underline-offset: calc(.025em + 2px);
     text-decoration-color: color-mix(in oklab, color(display-p3 .008 .008 .165 / .15), color(display-p3 .008 .008 .165 / .15));
 }
+
+@media (prefers-color-scheme: dark) {
+    .link {
+        text-decoration-color: color-mix(in oklab, color(display-p3 0.882 0.949 0.996/0.183), color(display-p3 0.882 0.949 0.996/0.183));
+    }
+}
