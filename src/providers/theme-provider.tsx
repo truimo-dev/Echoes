@@ -56,10 +56,10 @@ export const ThemeProvider = (props: PropsWithChildren) => {
     }, [])
 
     return (
-        <ThemeContext.Provider value={providerValue}>
+        <ThemeContext value={providerValue}>
             <ThemeScript/>
             {props.children}
-        </ThemeContext.Provider>
+        </ThemeContext>
     )
 }
 
