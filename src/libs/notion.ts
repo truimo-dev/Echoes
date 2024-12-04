@@ -1,7 +1,7 @@
 'use server'
 
-import {unstable_after as after} from 'next/server';
-import { getPlaiceholder } from 'plaiceholder'
+import {waitUntil} from '@vercel/functions'
+import {getPlaiceholder} from 'plaiceholder'
 import sizeOf from 'image-size'
 import {Client, isFullPageOrDatabase} from '@notionhq/client'
 import dayjs from 'dayjs'
@@ -343,7 +343,7 @@ async function getImageInfo(href: string): Promise<ImageInfo> {
 
     const info = await fetchImageInfo(href)
 
-    after(() => insertImageInfo(info))
+    waitUntil(insertImageInfo(info))
 
     return info
 }

@@ -1,4 +1,4 @@
-import {unstable_after as after} from 'next/server';
+import {waitUntil} from '@vercel/functions';
 import {kvKeys} from '@/constant/kv';
 import {redis} from '@/libs/redis';
 import {env} from '~/env.mjs';
@@ -32,9 +32,7 @@ async function LastVisitorInfo() {
         )
         lastVisitor = lv
 
-        after(async () => {
-            await redis.set(kvKeys.lastVisitor, cv)
-        })
+        waitUntil(redis.set(kvKeys.lastVisitor, cv))
     }
 
     if (!lastVisitor) {

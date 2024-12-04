@@ -1,4 +1,5 @@
-import {NextRequest, NextResponse, unstable_after as after} from 'next/server';
+import {waitUntil} from '@vercel/functions';
+import {NextRequest, NextResponse} from 'next/server';
 import {geolocation} from '@vercel/functions';
 import {env} from '~/env.mjs';
 import {kvKeys} from '@/constant/kv';
@@ -51,13 +52,11 @@ function middleware(request: NextRequest) {
 
     const geo = geolocation(request)
     if (geo !== null && env.VERCEL_ENV === 'production') {
-        after(async () => {
-            await redis.set(kvKeys.currentVisitor, {
-                country: geo.country,
-                city: geo.city,
-                flag: geo.flag,
-            })
-        })
+        waitUntil(redis.set(kvKeys.currentVisitor, {
+            country: geo.country,
+            city: geo.city,
+            flag: geo.flag,
+        }))
     }
 
     return response
