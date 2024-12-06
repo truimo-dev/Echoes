@@ -58,8 +58,8 @@ function Footer() {
     return (
         <footer>
             <div className="mx-auto py-4 px-8 max-w-7xl">
-                <p><Link href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"
-                         rel="noopener noreferrer">CC BY-NC-SA 4.0</Link></p>
+                <p><Link href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"
+                         rel="noopener noreferrer">CC BY-NC-ND 4.0</Link></p>
                 <p>Copyright &copy; 2024 <Link href="https://github.com/Truimo" target="_blank">Truimo</Link>. All
                     Rights Reserved.</p>
                 <p>
