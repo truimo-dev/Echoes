@@ -39,17 +39,25 @@ export function Content({children, className}: PropsWithChildren<{
 function Header() {
     return (
         <header>
-            <div className="mx-auto space-x-6 py-4 px-8 max-w-7xl">
+            <nav className="mx-auto space-x-6 py-4 px-8 max-w-7xl">
                 <Link href="/" className="font-bold text-xl">M.</Link>
-                <span className="space-x-4">
-                    <Link href="/diary">Diary</Link>
-                    <Link href="#">Posts</Link>
-                    <Link href="/friends">Friends</Link>
-                    <Link href="https://github.com/Truimo" target="_blank">
-                        <GitHubIcon/>&nbsp;Github
-                    </Link>
-                </span>
-            </div>
+                <ol className="inline-block space-x-4">
+                    <li className="inline-block">
+                        <Link href="/diary">Diary</Link>
+                    </li>
+                    <li className="inline-block">
+                        <Link href="#">Posts</Link>
+                    </li>
+                    <li className="inline-block">
+                        <Link href="/friends">Friends</Link>
+                    </li>
+                    <li className="inline-block">
+                        <Link href="https://github.com/Truimo" target="_blank">
+                            <GitHubIcon/>&nbsp;Github
+                        </Link>
+                    </li>
+                </ol>
+            </nav>
         </header>
     )
 }

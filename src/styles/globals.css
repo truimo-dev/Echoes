@@ -32,7 +32,7 @@ body {
     }
 }
 
-p svg, span svg {
+p svg, span svg, a svg {
     display: initial;
 }
 
