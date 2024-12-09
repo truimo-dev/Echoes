@@ -5,6 +5,8 @@ import {env} from '~/env.mjs';
 import {Icon} from '@/components/ui/icon';
 
 async function TotalPageViews() {
+    console.log('TotalPageViews Rendered');
+
     let views: number
     if (env.VERCEL_ENV === 'production') {
         views = await redis.incr(kvKeys.totalPageViews)
