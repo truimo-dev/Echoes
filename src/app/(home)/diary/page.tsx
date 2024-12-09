@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     }
 }
 
-// export const experimental_ppr = true
+export const experimental_ppr = true
 
 export default async function Page() {
     const list = await queryDiaryList();
