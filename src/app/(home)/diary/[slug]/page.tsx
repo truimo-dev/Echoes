@@ -6,7 +6,7 @@ import DiaryDetail from '@/components/diary/DiaryDetail'
 type Params = Promise<{ slug: string }>
 
 export const experimental_ppr = true
-export const dynamicParams = true
+// export const dynamicParams = true
 
 export async function generateStaticParams() {
     const response = await queryDiaryList()
