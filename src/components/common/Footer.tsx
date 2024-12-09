@@ -1,4 +1,4 @@
-import {waitUntil} from '@vercel/functions';
+import {after} from 'next/server';
 import {kvKeys} from '@/constant/kv';
 import {redis} from '@/libs/redis';
 import {env} from '~/env.mjs';
@@ -32,7 +32,7 @@ async function LastVisitorInfo() {
         )
         lastVisitor = lv
 
-        waitUntil(redis.set(kvKeys.lastVisitor, cv))
+        after(redis.set(kvKeys.lastVisitor, cv))
     }
 
     if (!lastVisitor) {

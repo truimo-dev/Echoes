@@ -1,6 +1,6 @@
 'use server'
 
-import {waitUntil} from '@vercel/functions'
+import {after} from 'next/server'
 import {getPlaiceholder} from 'plaiceholder'
 import sizeOf from 'image-size'
 import {Client, isFullPageOrDatabase} from '@notionhq/client'
@@ -343,7 +343,7 @@ async function getImageInfo(href: string): Promise<ImageInfo> {
 
     const info = await fetchImageInfo(href)
 
-    waitUntil(insertImageInfo(info))
+    after(insertImageInfo(info))
 
     return info
 }

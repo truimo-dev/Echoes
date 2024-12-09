@@ -1,5 +1,4 @@
-import {waitUntil} from '@vercel/functions';
-import {NextRequest, NextResponse} from 'next/server';
+import {after, NextRequest, NextResponse} from 'next/server';
 import {geolocation} from '@vercel/functions';
 import {env} from '~/env.mjs';
 import {kvKeys} from '@/constant/kv';
@@ -52,7 +51,7 @@ function middleware(request: NextRequest) {
 
     const geo = geolocation(request)
     if (geo !== null && env.VERCEL_ENV === 'production') {
-        waitUntil(redis.set(kvKeys.currentVisitor, {
+        after(redis.set(kvKeys.currentVisitor, {
             country: geo.country,
             city: geo.city,
             flag: geo.flag,
