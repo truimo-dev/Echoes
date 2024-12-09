@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
     images: {
         remotePatterns: [
             {
+                protocol: 'https',
                 hostname: 'shp.qpic.cn',
             },
         ],
