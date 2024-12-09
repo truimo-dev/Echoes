@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
         reactCompiler: {
             compilationMode: 'annotation',
         },
+        dynamicIO: true,
     },
     images: {
         remotePatterns: [
