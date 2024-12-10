@@ -1,5 +1,5 @@
 import type {Metadata} from 'next';
-import {queryDiaryList} from '@/libs/notion';
+import {queryDiaryListCached} from '@/libs/notion';
 import DiaryList from '@/components/diary/DiaryList';
 
 export const metadata: Metadata = {
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export const experimental_ppr = true
 
 export default async function Page() {
-    const list = await queryDiaryList();
+    const list = await queryDiaryListCached();
 
     return (
         <div className="mx-auto max-w-3xl">

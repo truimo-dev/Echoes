@@ -1,4 +1,4 @@
-import {queryBlockList} from '@/libs/notion';
+import {queryBlockListCached} from '@/libs/notion';
 import type {BlockResponse} from '@/libs/notion';
 import Paragraph from '@/components/notion/blocks/Paragraph';
 import NotSupported from '@/components/notion/blocks/NotSupported';
@@ -25,7 +25,7 @@ function Render({block}: RenderProps) {
 }
 
 async function NotionPreview({id}: NotionRenderProps) {
-    const response = await queryBlockList({block_id: id});
+    const response = await queryBlockListCached({block_id: id});
 
     return (
         <div>

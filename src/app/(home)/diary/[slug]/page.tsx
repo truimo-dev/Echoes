@@ -1,6 +1,6 @@
 import type {Metadata} from 'next'
 import {notFound} from 'next/navigation'
-import {queryDiary, queryDiaryList} from '@/libs/notion'
+import {queryDiaryCached, queryDiaryListCached} from '@/libs/notion'
 import DiaryDetail from '@/components/diary/DiaryDetail'
 
 type Params = Promise<{ slug: string }>
@@ -9,7 +9,7 @@ export const experimental_ppr = true
 export const dynamicParams = true
 
 export async function generateStaticParams() {
-    const response = await queryDiaryList()
+    const response = await queryDiaryListCached()
     return response.filter((diary) => {
         // todo only words support
         return diary.type === 'words'
@@ -22,7 +22,7 @@ export const generateMetadata = async (props: {
     params: Params
 }): Promise<Metadata> => {
     const {slug} = await props.params
-    const diary = await queryDiary(slug)
+    const diary = await queryDiaryCached(slug)
 
     if (null === diary) {
         return {}
@@ -43,7 +43,7 @@ export default async function Page(props: {
     params: Params
 }) {
     const params = await props.params
-    const diary = await queryDiary(params.slug)
+    const diary = await queryDiaryCached(params.slug)
 
     if (null === diary) {
         return notFound()

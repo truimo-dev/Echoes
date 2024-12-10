@@ -1,5 +1,6 @@
 'use server'
 
+import {cache} from 'react'
 import {after} from 'next/server'
 import {getPlaiceholder} from 'plaiceholder'
 import sizeOf from 'image-size'
@@ -78,6 +79,8 @@ async function queryDiaryList(query?: ListQuery): Promise<DiaryItem[]> {
     return list
 }
 
+const queryDiaryListCached = cache(queryDiaryList)
+
 async function queryDiary(slug: string): Promise<DiaryItem | null> {
     const dbQuery: QueryDatabaseParameters = {
         database_id: env.NOTION_DIARY_DATABASE_ID,
@@ -102,6 +105,8 @@ async function queryDiary(slug: string): Promise<DiaryItem | null> {
 
     return null
 }
+
+const queryDiaryCached = cache(queryDiary)
 
 
 function getDiaryFromQuery(page: PageObjectResponse): DiaryItem {
@@ -193,6 +198,8 @@ function queryBlockList(query: BlockListQuery): Promise<ListBlockChildrenRespons
     return notion.blocks.children.list(dbQuery)
 }
 
+const queryBlockListCached = cache(queryBlockList)
+
 interface ImageInfo {
     blur: string
     width: number
@@ -254,6 +261,8 @@ async function queryImageInfo(href: string): Promise<ImageInfo | null> {
 
     return null
 }
+
+const queryImageInfoCached = cache(queryImageInfo)
 
 async function fetchImageInfo(href: string): Promise<ImageInfo> {
     const info: ImageInfo = {
@@ -335,7 +344,7 @@ async function insertImageInfo(info: ImageInfo) {
 }
 
 async function getImageInfo(href: string): Promise<ImageInfo> {
-    const query = await queryImageInfo(href)
+    const query = await queryImageInfoCached(href)
 
     if (query) {
         return query
@@ -349,5 +358,6 @@ async function getImageInfo(href: string): Promise<ImageInfo> {
 }
 
 export {
-    queryDiaryList, queryBlockList, getImageInfo, queryDiary
+    queryDiaryList, queryBlockList, getImageInfo, queryDiary,
+    queryDiaryCached, queryDiaryListCached, queryBlockListCached,
 }
