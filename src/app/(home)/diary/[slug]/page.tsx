@@ -42,6 +42,8 @@ export const generateMetadata = async (props: {
 export default async function Page(props: {
     params: Params
 }) {
+    'use cache'
+
     const params = await props.params
     const diary = await queryDiary(params.slug)
 
