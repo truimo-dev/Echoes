@@ -6,7 +6,7 @@ import DiaryDetail from '@/components/diary/DiaryDetail'
 type Params = Promise<{ slug: string }>
 
 export const experimental_ppr = true
-// export const dynamicParams = true
+export const dynamicParams = true
 
 export async function generateStaticParams() {
     const response = await queryDiaryList()
@@ -42,8 +42,6 @@ export const generateMetadata = async (props: {
 export default async function Page(props: {
     params: Params
 }) {
-    'use cache'
-
     const params = await props.params
     const diary = await queryDiary(params.slug)
 

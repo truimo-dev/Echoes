@@ -13,8 +13,6 @@ export const metadata: Metadata = {
 export const experimental_ppr = true
 
 export default async function Page() {
-    'use cache'
-
     const list = await queryDiaryList();
 
     return (
