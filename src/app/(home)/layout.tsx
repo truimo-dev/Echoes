@@ -22,7 +22,7 @@ export const viewport: Viewport = {
     userScalable: true,
 }
 
-// export const experimental_ppr = true
+export const experimental_ppr = false
 
 export default function RootLayout({
     children,
