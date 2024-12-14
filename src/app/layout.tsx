@@ -1,7 +1,20 @@
 import '@/styles/index.css';
 
 import type {PropsWithChildren} from 'react';
+import type {Metadata} from 'next';
 import {ThemeProvider} from '@/providers/theme-provider';
+
+export const metadata: Metadata = {
+    icons: [
+        {
+            rel: 'icon',
+            url: '/favicon.ico'
+        },  {
+            rel: 'apple-touch-icon',
+            url: '/avatar.jpg'
+        }
+    ]
+};
 
 export default async function RootLayout(props: PropsWithChildren) {
     return (
