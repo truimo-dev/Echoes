@@ -1,0 +1,32 @@
+.loading {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    text-align: center;
+}
+
+.dot {
+    animation: 1.5s ease-out infinite ping;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0.5s;
+}
+
+.dot:nth-child(4) {
+    animation-delay: 1s;
+}
+
+@keyframes ping {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}

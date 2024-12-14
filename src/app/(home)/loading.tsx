@@ -1,11 +1,3 @@
-
-
-function Loading() {
-    return (
-        <div className="my-20 text-center">
-            <p className="mt-6">Loading...</p>
-        </div>
-    )
-}
+import {Loading} from '@/components/common/loading';
 
 export default Loading
