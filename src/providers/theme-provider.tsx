@@ -30,10 +30,10 @@ function switchTheme(theme: string) {
 
 export const ThemeProvider = (props: PropsWithChildren) => {
     useEffect(() => {
-        const matchMedia = window.matchMedia('(prefers-color-scheme: dark)');
-        const theme: string = matchMedia.matches ? 'dark' : 'light'
+        const matchMedia = window.matchMedia('(prefers-color-scheme: dark)')
+        // const theme: string = matchMedia.matches ? 'dark' : 'light'
 
-        switchTheme(theme)
+        // switchTheme(theme)
 
         function handleThemeChange(event: MediaQueryListEvent) {
             const theme: string = event.matches ? 'dark' : 'light'
@@ -66,13 +66,11 @@ export const ThemeProvider = (props: PropsWithChildren) => {
 const themeScript: string = `
 'use strict';
 function initTheme() {
-    const matchMedia = window.matchMedia('(prefers-color-scheme: dark)');
-    const theme = matchMedia.matches ? 'dark' : 'light';
-    const doc = document.documentElement
+    const matchMedia = window.matchMedia('(prefers-color-scheme: dark)'), theme = matchMedia.matches ? 'dark' : 'light', doc = document.documentElement
     doc.classList.add(theme)
     doc.style.colorScheme = theme
 }
-initTheme();
+window.requestAnimationFrame(initTheme);
 `
 
 function ThemeScript() {
