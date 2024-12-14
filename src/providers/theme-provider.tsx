@@ -28,18 +28,18 @@ function switchTheme(theme: string) {
     doc.style.colorScheme = theme
 }
 
+function handleThemeChange(event: MediaQueryListEvent) {
+    const theme: string = event.matches ? 'dark' : 'light'
+    // In general, it will not be equal to the original value.
+    applyTheme(theme)
+}
+
 export const ThemeProvider = (props: PropsWithChildren) => {
     useEffect(() => {
         const matchMedia = window.matchMedia('(prefers-color-scheme: dark)')
         // const theme: string = matchMedia.matches ? 'dark' : 'light'
 
         // switchTheme(theme)
-
-        function handleThemeChange(event: MediaQueryListEvent) {
-            const theme: string = event.matches ? 'dark' : 'light'
-            // In general, it will not be equal to the original value.
-            applyTheme(theme)
-        }
 
         matchMedia.addEventListener('change', handleThemeChange, false)
         return () => {
