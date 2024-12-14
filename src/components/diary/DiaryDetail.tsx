@@ -13,7 +13,7 @@ function DiaryDetail({diary}: DiaryDetailProps) {
         return (
             <article>
                 <Suspense>
-                    <DiaryImages images={diary.images}/>
+                    <DiaryImages className="my-3" images={diary.images}/>
                 </Suspense>
                 <Suspense>
                     <NotionPreview id={diary.id}/>
