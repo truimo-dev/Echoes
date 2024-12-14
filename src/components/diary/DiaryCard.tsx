@@ -1,9 +1,12 @@
 import {Suspense} from 'react';
+import clsx from 'clsx';
 import type {DiaryItem} from '@/libs/notion';
 import {NotionPreview} from '@/components/notion/NotionRender';
 import DiaryImages from '@/components/diary/DiaryImages';
 import {Icon} from "@/components/ui/icon";
 import {Link} from "@/components/ui/link";
+import styles from './DiaryCard.module.css';
+
 
 interface DiaryCardProps {
     diary: DiaryItem;
@@ -12,9 +15,9 @@ interface DiaryCardProps {
 function DiaryCard({diary}: DiaryCardProps) {
     if ('words' === diary.type) {
         return (
-            <article className="border rounded-xl p-3.5 w-[fit-content] max-w-full">
+            <article className={clsx('rounded-xl p-3.5 bg-zinc-600/5 dark:bg-zinc-500/20', styles.article)}>
                 <Suspense>
-                    <DiaryImages images={diary.images}/>
+                    <DiaryImages className="mb-3" images={diary.images}/>
                 </Suspense>
                 <Suspense>
                     <NotionPreview id={diary.id}/>

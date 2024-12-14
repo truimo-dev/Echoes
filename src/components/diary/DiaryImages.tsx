@@ -1,11 +1,15 @@
+import clsx from 'clsx';
 import type {DiaryImage} from '@/libs/notion';
+import {clsxm} from '@/libs/helper';
 import Image from './Image';
+import styles from './DiaryImages.module.css';
 
 interface DiaryImagesProps {
     images: DiaryImage[]
+    className?: string
 }
 
-function DiaryImages({ images }: DiaryImagesProps) {
+function DiaryImages({ images, className }: DiaryImagesProps) {
     let imagesChildren = null
     if (images.length > 0) {
         if (images.length === 1) {
@@ -13,7 +17,7 @@ function DiaryImages({ images }: DiaryImagesProps) {
             imagesChildren = (
                 <div className="w-full md:w-[80%]">
                     <figure className="relative w-full">
-                        <Image className="max-w-full object-cover rounded-[4px]"
+                        <Image className={clsx('max-w-full object-cover', styles.img)}
                              src={image.url} alt={image.name}/>
                     </figure>
                 </div>
@@ -25,7 +29,7 @@ function DiaryImages({ images }: DiaryImagesProps) {
                         {images.map((image, index) => {
                             return (
                                 <figure className="relative w-full aspect-square" key={index}>
-                                    <Image className="h-full max-w-full object-cover rounded-[4px]"
+                                    <Image className={clsx('h-full max-w-full object-cover', styles.img)}
                                          src={image.url} alt={image.name}/>
                                 </figure>
                             )
@@ -38,7 +42,7 @@ function DiaryImages({ images }: DiaryImagesProps) {
                         {images.map((image, index) => {
                             return (
                                 <figure className="relative w-full aspect-square" key={index}>
-                                    <Image className="h-full max-w-full object-cover rounded-[4px]"
+                                    <Image className={clsx('h-full max-w-full object-cover', styles.img)}
                                          src={image.url} alt={image.name}/>
                                 </figure>
                             )
@@ -48,7 +52,7 @@ function DiaryImages({ images }: DiaryImagesProps) {
             }
         }
         return (
-            <div className="my-3 w-auto">
+            <div className={clsxm(styles.images, className)}>
                 {imagesChildren}
             </div>
         )
