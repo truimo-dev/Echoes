@@ -20,7 +20,7 @@ function Icon(props: IconProps) {
     }, [props.name])
 
     return (
-        <i className={clsx('select-none', styles.icon, iconfont.className, iconClass, props.className)} aria-label={props.name}></i>
+        <i className={clsx('select-none', styles.icon, iconfont.className, iconClass, props.className)}></i>
     )
 }
 
