@@ -1,5 +1,6 @@
 import '@/styles/index.css';
 
+import {SpeedInsights} from '@vercel/speed-insights/next';
 import type {PropsWithChildren} from 'react';
 import type {Metadata} from 'next';
 import {ThemeProvider} from '@/providers/theme-provider';
@@ -23,6 +24,7 @@ export default async function RootLayout(props: PropsWithChildren) {
                 <ThemeProvider>
                     {props.children}
                 </ThemeProvider>
+                <SpeedInsights/>
             </body>
         </html>
     );
