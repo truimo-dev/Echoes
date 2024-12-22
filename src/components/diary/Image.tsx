@@ -12,7 +12,8 @@ async function Image(props: ImageProps) {
 
     return (
         <NextImage className={props.className} src={props.src} alt={props.alt}
-                   width={info.width} height={info.height} placeholder='blur' blurDataURL={info.blur} unoptimized
+                   width={info.width} height={info.height} placeholder='blur' blurDataURL={info.blur}
+                   referrerPolicy='no-referrer' unoptimized
         />
     )
 }

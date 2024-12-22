@@ -88,6 +88,6 @@ export function CamoImage({ src, alt, className }: CamoImageProps) {
     }, [src])
 
     return (
-        <img src={url} alt={alt} className={className}></img>
+        <img src={url} alt={alt} className={className} referrerPolicy='no-referrer'></img>
     )
 }
