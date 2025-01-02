@@ -1,6 +1,8 @@
 import type {NextRequest} from 'next/server';
 import {queryDiaryCached} from '@/libs/notion';
 
+export const runtime = 'edge';
+
 type Params = Promise<{ slug: string }>
 
 interface Args {
