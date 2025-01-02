@@ -1,8 +1,6 @@
 import type {NextRequest} from 'next/server';
 import {queryDiaryListCached} from '@/libs/notion';
 
-export const runtime = 'edge';
-
 interface QueryLimit {
     start?: string
     size?: number
