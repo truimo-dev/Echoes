@@ -3,8 +3,12 @@ import {queryDiaryCached} from '@/libs/notion';
 
 type Params = Promise<{ slug: string }>
 
-export async function GET(_request: NextRequest, params: Params) {
-    const { slug } = await params;
+interface Args {
+    params: Params
+}
+
+export async function GET(_request: NextRequest, {params}: Args) {
+    const {slug} = await params;
 
     const item = await queryDiaryCached(slug);
 
