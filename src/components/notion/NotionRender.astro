@@ -1,0 +1,17 @@
+---
+import {queryBlockListCached} from '@/libs/notion';
+import Render from './Render';
+
+interface Props {
+    id: string
+}
+
+const { id } = Astro.props;
+
+const response = await queryBlockListCached({block_id: id});
+---
+<div>
+    {response.results.map((res) => (
+        <Render block={res}/>
+    ))}
+</div>

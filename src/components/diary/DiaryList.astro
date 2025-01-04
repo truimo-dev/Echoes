@@ -1,0 +1,15 @@
+---
+import type {DiaryItem} from '@/libs/notion';
+import DiaryCard from '@/components/diary/DiaryCard.astro';
+
+interface Props {
+    list: DiaryItem[]
+}
+
+const { list } = Astro.props;
+---
+<div class="grid grid-cols-1 gap-6 select-none">
+    {list.map((item: DiaryItem) => (
+        <DiaryCard diary={item} />
+    ))}
+</div>

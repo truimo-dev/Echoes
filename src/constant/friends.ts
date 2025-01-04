@@ -22,6 +22,7 @@ const friends: FriendItem[] = [
 export {
     friends
 }
+
 export type {
     FriendItem
 }

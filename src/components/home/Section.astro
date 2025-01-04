@@ -1,0 +1,15 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import {clsxm} from '@/libs/helper';
+
+interface Props extends HTMLAttributes<'section'> {
+    class?: string
+}
+
+const {
+    class: className,
+} = Astro.props;
+---
+<section class={clsxm('grid grid-cols-1 gap-y-2', className)}>
+    <slot />
+</section>

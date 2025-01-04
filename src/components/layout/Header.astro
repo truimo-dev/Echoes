@@ -1,0 +1,25 @@
+---
+import Link from '@/components/ui/Link.astro';
+import { GitHubIcon } from '@/components/icons/GitHubIcon';
+---
+<header>
+    <nav class="mx-auto space-x-6 py-4 px-8 max-w-7xl">
+        <Link href="/" class="font-bold text-xl">M.</Link>
+        <ol class="inline-block space-x-4">
+            <li class="inline-block">
+                <Link href="/diary">Diary</Link>
+            </li>
+            <li class="inline-block">
+                <Link href="/posts">Posts</Link>
+            </li>
+            <li class="inline-block">
+                <Link href="/friends">Friends</Link>
+            </li>
+            <li class="inline-block">
+                <Link href="https://github.com/Truimo" target="_blank">
+                    <GitHubIcon/>&nbsp;Github
+                </Link>
+            </li>
+        </ol>
+    </nav>
+</header>

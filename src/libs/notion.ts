@@ -1,12 +1,9 @@
-'use server'
-
 import {cache} from 'react'
-import {after} from 'next/server'
+import {waitUntil} from '@vercel/functions'
 import {getPlaiceholder} from 'plaiceholder'
 import sizeOf from 'image-size'
 import {Client, isFullPageOrDatabase} from '@notionhq/client'
 import dayjs from 'dayjs'
-import {env} from '~/env.mjs'
 import type {Dayjs} from 'dayjs'
 import type {
     BlockObjectResponse,
@@ -16,7 +13,9 @@ import type {
     QueryDatabaseResponse, RichTextItemResponse
 } from '@notionhq/client/build/src/api-endpoints';
 
-const notion = new Client({auth: env.NOTION_KEY})
+import { NOTION_KEY, NOTION_DIARY_DATABASE_ID, NOTION_IMAGES_DATABASE_ID } from 'astro:env/server';
+
+const notion = new Client({auth: NOTION_KEY})
 
 interface QueryLimit {
     start?: string
@@ -54,7 +53,7 @@ export interface DiaryImage {
 
 async function queryDiaryList(query?: ListQuery): Promise<DiaryItem[]> {
     const dbQuery: QueryDatabaseParameters = {
-        database_id: env.NOTION_DIARY_DATABASE_ID,
+        database_id: NOTION_DIARY_DATABASE_ID,
         filter: {and: [{property: 'Published', checkbox: {equals: true}}]},
         sorts: [{property: 'Date', direction: 'descending'}],
     }
@@ -83,7 +82,7 @@ const queryDiaryListCached = cache(queryDiaryList)
 
 async function queryDiary(slug: string): Promise<DiaryItem | null> {
     const dbQuery: QueryDatabaseParameters = {
-        database_id: env.NOTION_DIARY_DATABASE_ID,
+        database_id: NOTION_DIARY_DATABASE_ID,
         filter: {
             and: [
                 {property: 'Published', checkbox: {equals: true}},
@@ -244,7 +243,7 @@ function getImageInfoFromQuery(page: PageObjectResponse): ImageInfo {
 
 async function queryImageInfo(href: string): Promise<ImageInfo | null> {
     const dbQuery: QueryDatabaseParameters = {
-        database_id: env.NOTION_IMAGES_DATABASE_ID,
+        database_id: NOTION_IMAGES_DATABASE_ID,
         filter: {and: [{property: 'Src', title: {equals: href}}]},
         page_size: 1,
     }
@@ -310,7 +309,7 @@ async function fetchImageInfo(href: string): Promise<ImageInfo> {
 async function insertImageInfo(info: ImageInfo) {
     await notion.pages.create({
         parent: {
-            database_id: env.NOTION_IMAGES_DATABASE_ID,
+            database_id: NOTION_IMAGES_DATABASE_ID,
         },
         properties: {
             Src: {
@@ -352,7 +351,7 @@ async function getImageInfo(href: string): Promise<ImageInfo> {
 
     const info = await fetchImageInfo(href)
 
-    after(insertImageInfo(info))
+    waitUntil(insertImageInfo(info))
 
     return info
 }

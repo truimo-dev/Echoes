@@ -1,0 +1,16 @@
+User-Agent: MJ12bot
+Disallow: /
+
+User-Agent: SemrushBot
+Disallow: /
+
+User-Agent: dotbot
+Disallow: /
+
+User-Agent: SMTBot
+Disallow: /
+
+User-Agent: *
+Allow: /
+Disallow: /development/
+

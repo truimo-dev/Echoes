@@ -1,0 +1,27 @@
+---
+import Head from '@/components/common/Head.astro';
+import '@/styles/index.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+	keywords?: Array<string>;
+}
+
+const {
+    title, description, keywords,
+} = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, user-scalable=yes" />
+		<link rel="icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" href="/avatar.jpg" />
+		<Head title={title} description={description} keywords={keywords} />
+	</head>
+	<body class="antialiased theme-1">
+		<slot />
+	</body>
+</html>

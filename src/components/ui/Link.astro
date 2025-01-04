@@ -1,0 +1,33 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import clsx from 'clsx';
+
+interface Props extends HTMLAttributes<'a'> {
+    class?: string
+    href: string
+}
+const {
+    href, class: className, rel, target = '_self'
+} = Astro.props;
+
+const clasz: string = clsx('link', className);
+---
+<a class={clasz} href={href} target={target} rel={rel}>
+    <slot/>
+</a>
+
+<style>
+.link {
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-thickness: min(2px, max(1px, .05em));
+    text-underline-offset: calc(.025em + 2px);
+    text-decoration-color: color-mix(in oklab, color(display-p3 .008 .008 .165 / .15), color(display-p3 .008 .008 .165 / .15));
+}
+
+@media (prefers-color-scheme: dark) {
+    .link {
+        text-decoration-color: color-mix(in oklab, color(display-p3 0.882 0.949 0.996/0.183), color(display-p3 0.882 0.949 0.996/0.183));
+    }
+}
+</style>

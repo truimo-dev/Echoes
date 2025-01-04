@@ -1,21 +1,13 @@
-import NextImage from 'next/image'
-import {getImageInfo} from '@/libs/notion';
-
 interface ImageProps {
-    className?: string;
-    src: string;
-    alt: string;
+    className?: string
+    src: string
+    alt: string
 }
 
-async function Image(props: ImageProps) {
-    const info = await getImageInfo(props.src);
-
+function Image(props: ImageProps) {
     return (
-        <NextImage className={props.className} src={props.src} alt={props.alt}
-                   width={info.width} height={info.height} placeholder='blur' blurDataURL={info.blur}
-                   referrerPolicy='no-referrer' unoptimized
-        />
-    )
+        <img className={props.className} referrerPolicy='no-referrer' src={props.src} alt={props.alt} />
+    );
 }
 
-export default Image
+export default Image;

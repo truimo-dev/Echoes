@@ -1,0 +1,14 @@
+---
+import type { FriendItem } from '@/constant/friends';
+import CamoImage from '@/components/common/CamoImage';
+
+interface Props {
+    it: FriendItem
+}
+
+const { title, description, icon, href } = Astro.props.it;
+---
+<a href={href} title={title} target='_blank' class='text-center inline-block space-y-2'>
+    <CamoImage client:idle src={icon} alt={description} className='inline-block h-14 w-14 aspect-square rounded-xl'/>
+    <p>{title}</p>
+</a>

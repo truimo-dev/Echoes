@@ -1,0 +1,39 @@
+---
+import Layout from '@/layouts/MainLayout.astro';
+import Link from '@/components/ui/Link.astro';
+import Header from '@/components/home/Header.astro';
+import Section from '@/components/home/Section.astro';
+---
+<Layout>
+    <div class="mx-auto max-w-3xl">
+        <article class="space-y-4">
+            <Header />
+            <div class="space-y-10 mx-4">
+                <Section>
+                    <p>Hi.</p>
+                    <p>My name is QianXiaomo (<span class="text-primary">QXM</span>, for short). I’m a software
+                        developer.</p>
+                </Section>
+                <Section class="hidden">
+                    <h4>My slogan:</h4>
+                    <ol class="list-inside list-disc text-sm">
+                        <li class="mb-2">Read widely and travel extensively.</li>
+                        <li class="mb-2">Realize that the past cannot be changed, but know that the future can be pursued.</li>
+                        <li>Talk is cheap, show me the code.</li>
+                    </ol>
+                </Section>
+                <Section>
+                    <p>No matter who you are, I&#39;m glad you could come here.</p>
+                    <p>You won&#39;t get anything here. This website and I are just placeholders in both the digital
+                        and real worlds.</p>
+                    <p>...</p>
+                    <p>Maybe you can take a look around here.</p>
+                </Section>
+                <Section>
+                <h4 id="contact">Contact:</h4>
+                    <p>Email: <Link href="mailto:hi@xdm.me">hi@qxm.me</Link></p>
+                </Section>
+            </div>
+        </article>
+    </div>
+</Layout>

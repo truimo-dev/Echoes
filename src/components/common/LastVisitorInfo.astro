@@ -1,0 +1,37 @@
+---
+import {waitUntil} from '@vercel/functions';
+import {kvKeys} from '@/constant/kv';
+import {redis} from '@/libs/redis';
+import Icon from '@/components/ui/Icon.astro';
+
+import { VERCEL_ENV } from 'astro:env/server';
+
+interface VisitorGeolocation {
+    country: string
+    city?: string
+    flag: string
+}
+
+let lastVisitor: VisitorGeolocation | undefined = undefined
+    if (VERCEL_ENV === 'production') {
+        const [lv, cv] = await redis.mget<VisitorGeolocation[]>(
+            kvKeys.lastVisitor,
+            kvKeys.currentVisitor
+        )
+        lastVisitor = lv
+
+        waitUntil(redis.set(kvKeys.lastVisitor, cv))
+    }
+
+    if (!lastVisitor) {
+        lastVisitor = {
+            country: 'US',
+            city: 'New York',
+            flag: '🇺🇸',
+        }
+    }
+---
+<span>
+    <span><Icon name="favor"/>&nbsp;Recent visitors have come from {[lastVisitor.city, lastVisitor.country].filter(Boolean).join(', ')}&nbsp;</span>
+    <span class="font-medium">{lastVisitor.flag}</span>
+</span>

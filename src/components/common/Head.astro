@@ -1,0 +1,20 @@
+---
+import { siteConfig } from '../../constant/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  keywords?: Array<string>;
+}
+
+const {
+    title,
+    description = siteConfig.description,
+    keywords = siteConfig.keywords
+} = Astro.props;
+
+const siteTitle: string = title ? `${title} - ${siteConfig.title}` : siteConfig.title;
+---
+<title>{siteTitle}</title>
+<meta name="description" content={description} />
+<meta name="keywords" content={keywords.join()} />

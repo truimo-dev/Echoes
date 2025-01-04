@@ -1,0 +1,29 @@
+---
+import Layout from '@/layouts/MainLayout.astro';
+import DiaryDetail from '@/components/diary/DiaryDetail.astro';
+import {queryDiaryCached, queryDiaryListCached} from '@/libs/notion';
+
+const { slug } = Astro.params;
+
+if (void 0 === slug) {
+    return Astro.redirect('/404');
+}
+
+const diary = await queryDiaryCached(slug);
+
+if (null === diary) {
+    return Astro.redirect('/404');
+}
+
+const title = `Diary #${diary.title.length > 0 ? diary.title : diary.name}`
+---
+<Layout title={title} description='There are my diary.'>
+    <div class="mx-auto max-w-3xl">
+        <div class="mx-4">
+            <p class="text-2xl font-bold">{title}</p>
+        </div>
+        <div class="select-none mx-4">
+            <DiaryDetail diary={diary}/>
+        </div>
+    </div>
+</Layout>
