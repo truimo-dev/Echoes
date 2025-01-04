@@ -50,7 +50,6 @@ export default defineConfig({
   },
 
   adapter: vercel({
-    maxDuration: 6,
     edgeMiddleware: true,
   }),
 });
