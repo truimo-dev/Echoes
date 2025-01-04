@@ -4,8 +4,8 @@ import { Image } from 'astro:assets'
 <header class="font-normal">
     <div class="flex items-end gap-x-4">
         <div class="shrink-0">
-            <Image src="/avatar.jpg" alt="avatar" height="96" width="96"
-                class="rounded-xl w-24 h-24 aspect-square" priority></Image>
+            <Image src="/avatar.jpg" alt="avatar" height="96" width="96" loading="eager"
+                class="rounded-xl w-24 h-24 aspect-square" priority={true}></Image>
         </div>
         <div>
             <h1 class="text-2xl font-bold my-2">Xiaomo Qian</h1>
