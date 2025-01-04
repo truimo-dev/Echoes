@@ -10,9 +10,9 @@ import LastVisitorInfo from '@/components/common/LastVisitorInfo.astro';
         <p>Copyright &copy; 2024 <Link href="https://github.com/Truimo" target="_blank">Truimo</Link>. All
             Rights Reserved.</p>
         <p>
-            <TotalPageViews />
+            <TotalPageViews server:defer />
             <span>&nbsp;</span>
-            <LastVisitorInfo />
+            <LastVisitorInfo server:defer />
         </p>
     </div>
 </footer>
