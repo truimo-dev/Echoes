@@ -3,8 +3,6 @@ import {waitUntil} from '@vercel/functions'
 import {getPlaiceholder} from 'plaiceholder'
 import sizeOf from 'image-size'
 import {Client, isFullPageOrDatabase} from '@notionhq/client'
-import dayjs from 'dayjs'
-import type {Dayjs} from 'dayjs'
 import type {
     BlockObjectResponse,
     ListBlockChildrenParameters, ListBlockChildrenResponse,
@@ -34,7 +32,7 @@ interface Tag {
 export interface DiaryItem {
     id: string,
     name: string,
-    date: Dayjs,
+    date: string,
     title: string,
     type: string,
     tags: Tag[],
@@ -111,7 +109,7 @@ const queryDiaryCached = cache(queryDiary)
 function getDiaryFromQuery(page: PageObjectResponse): DiaryItem {
     const properties = page.properties
 
-    const date: Dayjs = dayjs(properties.Date.type === 'date' && properties.Date.date ? properties.Date.date.start : '2024-11-23')
+    const date: string = properties.Date.type === 'date' && properties.Date.date ? properties.Date.date.start : '2024-11-23';
 
     const diary: DiaryItem = {
         id: page.id,
