@@ -6,7 +6,8 @@ interface ImageProps {
 
 function Image(props: ImageProps) {
     return (
-        <img className={props.className} referrerPolicy='no-referrer' src={props.src} alt={props.alt} />
+        <img className={props.className} src={props.src} alt={props.alt}
+             referrerPolicy='no-referrer' loading='lazy' />
     );
 }
 
