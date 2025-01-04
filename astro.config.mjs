@@ -5,7 +5,7 @@ import tailwind from '@astrojs/tailwind';
 
 import react from '@astrojs/react';
 
-import vercelServerless from '@astrojs/vercel/serverless';
+import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
@@ -49,7 +49,7 @@ export default defineConfig({
     }
   },
 
-  adapter: vercelServerless({
+  adapter: vercel({
     maxDuration: 6,
     edgeMiddleware: true,
   }),
