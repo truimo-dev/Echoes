@@ -6,7 +6,7 @@ import {redis} from '@/libs/redis';
 import { VERCEL_ENV } from 'astro:env/server';
 
 export function onRequest(context: APIContext, next: MiddlewareNext): Promise<Response> | Response | Promise<void> | void {
-    
+
     const geo = geolocation(context.request);
     if (geo !== null && VERCEL_ENV === 'production') {
         waitUntil(
@@ -16,7 +16,7 @@ export function onRequest(context: APIContext, next: MiddlewareNext): Promise<Re
                 flag: geo.flag,
             })
         );
-    };
-    
+    }
+
     return next();
-};
+}
