@@ -10,6 +10,6 @@ const { list } = Astro.props;
 ---
 <div class="grid grid-cols-1 gap-6 select-none">
     {list.filter((item: DiaryItem) => item.type === 'words').map((item: DiaryItem) => (
-        <DiaryCard diary={item} server:defer />
+        <DiaryCard diary={item} />
     ))}
 </div>

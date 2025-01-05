@@ -17,7 +17,7 @@ const date: Dayjs = dayjs(diary.date);
 ---
 <article class='article rounded-xl p-3.5 bg-zinc-600/5 dark:bg-zinc-500/20'>
     <DiaryImages className="mb-3" images={diary.images} />
-    <NotionRender id={diary.id} />
+    <NotionRender id={diary.id} server:defer />
     <div class="flex items-center justify-between">
         <div class="text-gray-800 text-xs text-left dark:text-gray-300">
             <p><Link href={`/diary/${diary.name}`}>Read More.</Link></p>
