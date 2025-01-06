@@ -15,9 +15,8 @@ export default defineConfig({
         }),
         react(),
     ],
-
+    compressHTML: true,
     output: 'server',
-
     env: {
         schema: {
             VERCEL_ENV: envField.string({
@@ -48,7 +47,6 @@ export default defineConfig({
             }),
         }
     },
-
     adapter: vercel({
         edgeMiddleware: true,
         imageService: true,

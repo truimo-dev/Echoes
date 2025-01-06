@@ -13,23 +13,23 @@ interface VisitorGeolocation {
 }
 
 let lastVisitor: VisitorGeolocation | undefined = undefined
-    if (VERCEL_ENV === 'production') {
-        const [lv, cv] = await redis.mget<VisitorGeolocation[]>(
-            kvKeys.lastVisitor,
-            kvKeys.currentVisitor
-        )
-        lastVisitor = lv
+if (VERCEL_ENV === 'production') {
+    const [lv, cv] = await redis.mget<VisitorGeolocation[]>(
+        kvKeys.lastVisitor,
+        kvKeys.currentVisitor
+    )
+    lastVisitor = lv
 
-        waitUntil(redis.set(kvKeys.lastVisitor, cv))
-    }
+    waitUntil(redis.set(kvKeys.lastVisitor, cv))
+}
 
-    if (!lastVisitor) {
-        lastVisitor = {
-            country: 'US',
-            city: 'New York',
-            flag: '🇺🇸',
-        }
+if (!lastVisitor) {
+    lastVisitor = {
+        country: 'US',
+        city: 'New York',
+        flag: '🇺🇸',
     }
+}
 ---
 <span>
     <span><Icon name="favor"/>&nbsp;Recent visitors have come from {[lastVisitor.city, lastVisitor.country].filter(Boolean).join(', ')}&nbsp;</span>

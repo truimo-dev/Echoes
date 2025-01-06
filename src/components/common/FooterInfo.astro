@@ -1,0 +1,18 @@
+---
+import type {HTMLAttributes} from 'astro/types';
+import TotalPageViews from './TotalPageViews.astro';
+import LastVisitorInfo from './LastVisitorInfo.astro';
+
+interface Props extends HTMLAttributes<'p'> {
+    class?: string
+}
+
+const {
+    class: className
+} = Astro.props;
+---
+<p class={className}>
+    <TotalPageViews />
+    <span>&nbsp;</span>
+    <LastVisitorInfo />
+</p>
