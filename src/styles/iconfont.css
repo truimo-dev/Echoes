@@ -1,5 +1,6 @@
 @font-face {
-    font-family: "icon";
+    font-family: 'icon';
+    font-display: swap;
     src: url('/fonts/icon/iconfont.eot');
     src: url('/fonts/icon/iconfont.eot#iefix') format('embedded-opentype'),
     url('/fonts/icon/iconfont.ttf') format('truetype'),
@@ -7,7 +8,7 @@
 }
 
 .icon {
-    font-family: "icon", serif;
+    font-family: 'icon', serif;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
