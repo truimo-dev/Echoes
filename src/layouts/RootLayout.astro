@@ -2,6 +2,8 @@
 import Analytics from '@vercel/analytics/astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
 import Head from '@/components/common/Head.astro';
+import SayHi from '@/components/common/SayHi.astro';
+
 import '@/styles/index.css';
 
 interface Props {
@@ -26,6 +28,7 @@ const {
 		<Analytics />
 	</head>
 	<body class="antialiased theme-1">
-		<slot />
+        <slot />
+        <SayHi />
 	</body>
 </html>
