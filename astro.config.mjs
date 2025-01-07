@@ -22,6 +22,7 @@ export default defineConfig({
             VERCEL_ENV: envField.string({
                 context: 'server',
                 access: 'public',
+                default: 'development',
                 optional: true,
             }),
             UPSTASH_REDIS_REST_TOKEN: envField.string({
