@@ -21,5 +21,11 @@
                 }
             ]
         }
+    ],
+    "rewrites": [
+        {
+            "source": "/_next/image",
+            "destination": "/_vercel/image"
+        }
     ]
 }
