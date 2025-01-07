@@ -1,8 +1,9 @@
-import {cache} from 'react'
-import {waitUntil} from '@vercel/functions'
-import {getPlaiceholder} from 'plaiceholder'
-import sizeOf from 'image-size'
-import {Client, isFullPageOrDatabase} from '@notionhq/client'
+import {cache} from 'react';
+import {waitUntil} from '@vercel/functions';
+import {getPlaiceholder} from 'plaiceholder';
+import sizeOf from 'image-size';
+import {Client, isFullPageOrDatabase} from '@notionhq/client';
+import {redis, sha1} from './redis';
 import type {
     BlockObjectResponse,
     ListBlockChildrenParameters, ListBlockChildrenResponse,
@@ -76,7 +77,17 @@ async function queryDiaryList(query?: ListQuery): Promise<DiaryItem[]> {
     return list
 }
 
-const queryDiaryListCached = cache(queryDiaryList)
+const queryDiaryListCached = async (query?: ListQuery) => {
+    const hash = sha1(query);
+    const key: string = `queryDiaryList:${hash}`;
+    const value = await redis.get(key);
+    if (null === value) {
+        const newValue = await queryDiaryList(query);
+        redis.set(key, newValue, { ex: 86400 });
+        return newValue;
+    }
+    return value;
+}
 
 async function queryDiary(slug: string): Promise<DiaryItem | null> {
     const dbQuery: QueryDatabaseParameters = {
@@ -103,8 +114,17 @@ async function queryDiary(slug: string): Promise<DiaryItem | null> {
     return null
 }
 
-const queryDiaryCached = cache(queryDiary)
-
+const queryDiaryCached = async (slug: string) => {
+    const hash = sha1(slug);
+    const key: string = `queryDiary:${hash}`;
+    const value = await redis.get(key);
+    if (null === value) {
+        const newValue = await queryDiary(slug);
+        redis.set(key, newValue, { ex: 86400 });
+        return newValue;
+    }
+    return value;
+}
 
 function getDiaryFromQuery(page: PageObjectResponse): DiaryItem {
     const properties = page.properties
@@ -195,7 +215,17 @@ function queryBlockList(query: BlockListQuery): Promise<ListBlockChildrenRespons
     return notion.blocks.children.list(dbQuery)
 }
 
-const queryBlockListCached = cache(queryBlockList)
+const queryBlockListCached = async (query: BlockListQuery) => {
+    const hash = sha1(query);
+    const key: string = `queryBlockList:${hash}`;
+    const value = await redis.get(key);
+    if (null === value) {
+        const newValue = await queryBlockList(query);
+        redis.set(key, newValue, { ex: 86400 });
+        return newValue;
+    }
+    return value;
+}
 
 interface ImageInfo {
     blur: string
