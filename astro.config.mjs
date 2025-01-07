@@ -17,6 +17,12 @@ export default defineConfig({
     ],
     compressHTML: true,
     output: 'server',
+    redirects: {
+        '/_next/image': {
+            status: 302,
+            destination: '/_vercel/image',
+        }
+    },
     env: {
         schema: {
             VERCEL_ENV: envField.string({
