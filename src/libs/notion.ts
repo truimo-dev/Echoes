@@ -3,7 +3,8 @@ import {waitUntil} from '@vercel/functions';
 import {getPlaiceholder} from 'plaiceholder';
 import sizeOf from 'image-size';
 import {Client, isFullPageOrDatabase} from '@notionhq/client';
-import {redis, sha1} from './redis';
+import {redis} from './redis';
+import {sha1} from './sha';
 import type {
     BlockObjectResponse,
     ListBlockChildrenParameters, ListBlockChildrenResponse,

@@ -1,4 +1,3 @@
-import crypto from 'crypto';
 import {Ratelimit} from '@upstash/ratelimit';
 import {Redis} from '@upstash/redis';
 
@@ -15,12 +14,3 @@ export const rateLimit = new Ratelimit({
     limiter: Ratelimit.slidingWindow(30, '10 s'),
     analytics: true,
 });
-
-export const sha1 = (obj: any) => {
-    const str = JSON.stringify(obj);
-    const hash = crypto.createHash('sha1');
-
-    hash.update(str);
-
-    return hash.digest('hex');
-}
