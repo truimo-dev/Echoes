@@ -20,9 +20,6 @@ importers:
       '@notionhq/client':
         specifier: ^2.2.15
         version: 2.2.15
-      '@types/node':
-        specifier: 22.10.5
-        version: 22.10.5
       '@types/react':
         specifier: ^19.0.2
         version: 19.0.3
@@ -68,6 +65,10 @@ importers:
       tailwindcss:
         specifier: ^3.4.17
         version: 3.4.17
+    devDependencies:
+      '@types/node':
+        specifier: ^22.10.5
+        version: 22.10.5
 
 packages:
 
