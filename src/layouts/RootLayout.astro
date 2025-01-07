@@ -1,6 +1,7 @@
 ---
 import Head from '@/components/common/Head.astro';
 import SayHi from '@/components/common/SayHi.astro';
+import Preload from '@/components/common/Preload.astro';
 import Analytics from '@/components/common/Analytics.astro';
 
 import '@/styles/index.css';
@@ -23,6 +24,7 @@ const {
 		<link rel="icon" href="/favicon.ico" />
 		<link rel="apple-touch-icon" href="/avatar.jpg" />
 		<Head title={title} description={description} keywords={keywords} />
+		<Preload />
 		<Analytics />
 	</head>
 	<body class="antialiased theme-1">
