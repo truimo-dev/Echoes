@@ -1,4 +1,4 @@
-import crypto from 'node:crypto';
+import crypto from 'crypto';
 import {Ratelimit} from '@upstash/ratelimit';
 import {Redis} from '@upstash/redis';
 
