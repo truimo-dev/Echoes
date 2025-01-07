@@ -10,7 +10,10 @@ export default {
             },
             maxWidth: {
                 '4/5': '80%',
-            }
+            },
+            spacing: {
+                'inherit': 'inherit',
+            },
         },
     },
     plugins: [],
