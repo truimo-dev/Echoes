@@ -9,7 +9,7 @@ export function onRequest(context: APIContext, next: MiddlewareNext): Promise<Re
     
     const { pathname } = context.url, geo = geolocation(context.request);
     
-    if (geo !== null && VERCEL_ENV === 'production' && pathname === '/_server-islands/FooterInfo') {
+    if (geo !== null && VERCEL_ENV === 'production' && pathname !== '/_server-islands/FooterInfo') {
         waitUntil(
             redis.set(kvKeys.currentVisitor, {
                 country: geo.country,
