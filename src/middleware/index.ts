@@ -7,9 +7,10 @@ import { VERCEL_ENV } from 'astro:env/server';
 
 export function onRequest(context: APIContext, next: MiddlewareNext): Promise<Response> | Response | Promise<void> | void {
     
-    const { pathname } = context.url, geo = geolocation(context.request);
-    
-    if (geo !== null && VERCEL_ENV === 'production' && pathname !== '/_server-islands/FooterInfo') {
+    const geo = geolocation(context.request);
+    const { pathname } = context.url;
+
+    if (geo !== null && VERCEL_ENV === 'production') {
         waitUntil(
             redis.set(kvKeys.currentVisitor, {
                 country: geo.country,
