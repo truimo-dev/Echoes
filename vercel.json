@@ -1,27 +1,5 @@
 {
-    "headers": [
-        {
-            "source": "/api/camo",
-            "headers": [
-                {
-                    "key": "Cache-Control",
-                    "value": "s-maxage=3600, stale-while-revalidate=30"
-                },
-                {
-                    "key": "CDN-Cache-Control",
-                    "value": "max-age=3600"
-                },
-                {
-                    "key": "Vercel-CDN-Cache-Control",
-                    "value": "max-age=3600"
-                },
-                {
-                    "key": "Cloudflare-CDN-Cache-Control",
-                    "value": "max-age=3600"
-                }
-            ]
-        }
-    ],
+    "headers": [],
     "rewrites": [
         {
             "source": "/_next/image",
