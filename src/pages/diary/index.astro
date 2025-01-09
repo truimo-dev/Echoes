@@ -4,9 +4,11 @@ import { getCollection } from 'astro:content';
 import Layout from '@/layouts/MainLayout.astro';
 import DiaryList from '@/components/diary/DiaryList.astro';
 
-const posts = await getCollection('diary');
+const posts = await getCollection('diary', ({ data }) => {
+    return data.type === 'words';
+});
 
-const list: Array<DiaryItem> = posts.filter(it => it.data.type === 'words').map(it => it.data);
+const list: Array<DiaryItem> = posts.map(it => it.data);
 ---
 <Layout title='Diary' description='There are my diary.'>
     <div class="mx-auto max-w-3xl">
