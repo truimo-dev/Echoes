@@ -31,7 +31,7 @@ interface Tag {
     color: string
 }
 
-export interface DiaryItem {
+export interface DiaryItem extends Record<string, unknown> {
     id: string,
     name: string,
     date: string,
@@ -84,7 +84,7 @@ const queryDiaryListCached = async (query?: ListQuery) => {
     const value: DiaryItem[] | null = await redis.get(key);
     if (null === value) {
         const newValue = await queryDiaryList(query);
-        redis.set(key, newValue, { ex: 86400 });
+        await redis.set(key, newValue, {ex: 86400});
         return newValue;
     }
     return value;
@@ -121,7 +121,7 @@ const queryDiaryCached = async (slug: string) => {
     const value: DiaryItem | null = await redis.get(key);
     if (null === value) {
         const newValue = await queryDiary(slug);
-        redis.set(key, newValue, { ex: 86400 });
+        await redis.set(key, newValue, {ex: 86400});
         return newValue;
     }
     return value;
@@ -222,7 +222,7 @@ const queryBlockListCached = async (query: BlockListQuery) => {
     const value: ListBlockChildrenResponse | null = await redis.get(key);
     if (null === value) {
         const newValue = await queryBlockList(query);
-        redis.set(key, newValue, { ex: 86400 });
+        await redis.set(key, newValue, {ex: 86400});
         return newValue;
     }
     return value;

@@ -9,7 +9,7 @@ interface Props {
 const { list } = Astro.props;
 ---
 <div class="grid grid-cols-1 gap-6 select-none">
-    {list.filter((item: DiaryItem) => item.type === 'words').map((item: DiaryItem) => (
+    {list.map((item: DiaryItem) => (
         <DiaryCard diary={item} />
     ))}
 </div>
