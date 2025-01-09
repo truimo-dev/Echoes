@@ -35,12 +35,12 @@ function diaryLoader(): Loader {
 
             for (const post of posts) {
                 const data = await parseData({
-                    id: post.id,
+                    id: post.name,
                     data: post,
                 });
 
                 store.set({
-                    id: data.id,
+                    id: data.name,
                     data,
                 });
             }
