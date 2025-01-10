@@ -17,7 +17,7 @@ function Image({block, children}: PropsWithChildren<{
     return (
         <Block>
             <figure className="max-w-full w-fit mx-auto">
-                <img src={url} alt={alt} loading="lazy" crossOrigin="anonymous" className="block max-w-full w-fit object-cover"/>
+                <img src={url} alt={alt} loading='lazy' referrerPolicy='no-referrer' className="block max-w-full w-fit object-cover"/>
                 {img.caption.length > 0 && (<figcaption className="py-1 break-words text-neutral-500 text-sm">
                     <RichText rich_text={img.caption}/>
                 </figcaption>)}
