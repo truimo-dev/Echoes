@@ -3,14 +3,15 @@ import {queryBlockListCached} from '@/libs/notion';
 import Render from './Render';
 
 interface Props {
+    class?: string;
     id: string
 }
 
-const { id } = Astro.props;
+const { id, class: className } = Astro.props;
 
 const response = await queryBlockListCached({block_id: id});
 ---
-<div>
+<div class={className}>
     {response.results.map((res) => (
         <Render block={res}/>
     ))}
