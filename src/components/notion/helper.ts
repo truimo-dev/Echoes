@@ -44,7 +44,7 @@ function getAnnotationsColor(color: string): string {
     case 'green':
         return 'text-green-500'
     case 'blue':
-        return 'text-blue-500'
+        return 'text-blue-500 dark:text-blue-300'
     case 'purple':
         return 'text-purple-500'
     case 'pink':
