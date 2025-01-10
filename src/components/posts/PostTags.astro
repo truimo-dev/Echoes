@@ -1,0 +1,21 @@
+---
+import type {DiaryItem} from '@/libs/notion';
+import { getAnnotationsColor } from '@/components/notion/helper';
+
+interface Props {
+    class?: string;
+    tags: DiaryItem['tags'];
+}
+
+const { tags, class: className } = Astro.props;
+---
+<div class={className}>
+    <p class="text-xs">
+        {tags.map(tag => {
+            const color: string = getAnnotationsColor(tag.color);
+            return (
+                <span class={color}># {tag.name}</span>
+            )
+        })}
+    </p>
+</div>
