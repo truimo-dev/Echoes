@@ -18,11 +18,11 @@ if (void 0 === entry) {
 
 const diary: DiaryItem = entry.data;
 
-if ('single' === diary.type) {
-    return Astro.redirect(`/posts/${diary.name}`);
+if ('diary' === diary.type) {
+    return Astro.redirect(`/diary/${diary.name}`);
 }
 
-const title = `Diary # ${diary.title.length > 0 ? diary.title : diary.name}`
+const title = `Post # ${diary.title.length > 0 ? diary.title : diary.name}`
 ---
 <Layout title={title} description='There are my diary.'>
     <div class="mx-auto max-w-3xl">
