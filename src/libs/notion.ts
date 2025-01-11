@@ -22,8 +22,13 @@ interface QueryLimit {
     size?: number
 }
 
+interface QueryFilter {
+    type?: string
+}
+
 interface ListQuery {
-    limit?: QueryLimit
+    limit?: QueryLimit,
+    filter?: QueryFilter,
 }
 
 interface Tag {
@@ -52,9 +57,19 @@ export interface DiaryImage {
 }
 
 async function queryDiaryList(query?: ListQuery): Promise<DiaryItem[]> {
+    const filter: QueryDatabaseParameters['filter'] = {
+        and: [
+            {property: 'Published', checkbox: {equals: true}},
+        ]
+    }
+
+    if (query?.filter?.type) {
+        filter.and.push({property: 'Type', select: {equals: query.filter.type}})
+    }
+
     const dbQuery: QueryDatabaseParameters = {
         database_id: NOTION_DIARY_DATABASE_ID,
-        filter: {and: [{property: 'Published', checkbox: {equals: true}}]},
+        filter: filter,
         sorts: [{property: 'Date', direction: 'descending'}],
     }
 

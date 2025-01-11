@@ -1,6 +1,5 @@
 ---
-import type { DiaryItem } from '@/libs/notion';
-import { getEntry } from 'astro:content';
+import { queryDiaryCached } from '@/libs/notion';
 import Layout from '@/layouts/MainLayout.astro';
 import DiaryDetail from '@/components/diary/DiaryDetail.astro';
 
@@ -10,13 +9,11 @@ if (void 0 === slug) {
     return Astro.redirect('/404');
 }
 
-const entry = await getEntry('diary', slug);
+const diary = await queryDiaryCached(slug);
 
-if (void 0 === entry) {
+if (null === diary) {
     return Astro.redirect('/404');
 }
-
-const diary: DiaryItem = entry.data;
 
 if ('single' === diary.type) {
     return Astro.redirect(`/posts/${diary.name}`);

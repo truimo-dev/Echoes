@@ -1,14 +1,13 @@
 ---
-import type { DiaryItem } from '@/libs/notion';
-import { getCollection } from 'astro:content';
+import { queryDiaryListCached } from '@/libs/notion';
 import Layout from '@/layouts/MainLayout.astro';
 import DiaryList from '@/components/diary/DiaryList.astro';
 
-const posts = await getCollection('diary', ({ data }) => {
-    return data.type === 'words';
+const list = await queryDiaryListCached({
+    filter: {
+        type: 'words',
+    }
 });
-
-const list: Array<DiaryItem> = posts.map(it => it.data);
 ---
 <Layout title='Diary' description='There are my diary.'>
     <div class="mx-auto max-w-3xl">
