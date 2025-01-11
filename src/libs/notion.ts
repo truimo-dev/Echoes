@@ -1,4 +1,5 @@
 import {cache} from 'react';
+import NodeCache from 'node-cache';
 import {waitUntil} from '@vercel/functions';
 import {getPlaiceholder} from 'plaiceholder';
 import sizeOf from 'image-size';
@@ -14,6 +15,13 @@ import type {
 } from '@notionhq/client/build/src/api-endpoints';
 
 import { NOTION_KEY, NOTION_DIARY_DATABASE_ID, NOTION_IMAGES_DATABASE_ID } from 'astro:env/server';
+
+const myCache = new NodeCache({
+    stdTTL: 43200,
+    checkperiod: 1800,
+    useClones: false,
+    deleteOnExpire: true,
+});
 
 const notion = new Client({auth: NOTION_KEY})
 
@@ -96,12 +104,17 @@ async function queryDiaryList(query?: ListQuery): Promise<DiaryItem[]> {
 const queryDiaryListCached = async (query?: ListQuery) => {
     const hash = sha1(void 0 === query ? 'unknown' : query);
     const key: string = `queryDiaryList:${hash}`;
+    const cache = myCache.get(key);
+    if (cache) {
+        return cache;
+    }
     const value: DiaryItem[] | null = await redis.get(key);
     if (null === value) {
         const newValue = await queryDiaryList(query);
         await redis.set(key, newValue, {ex: 86400});
         return newValue;
     }
+    myCache.set(key, value);
     return value;
 }
 
@@ -133,12 +146,17 @@ async function queryDiary(slug: string): Promise<DiaryItem | null> {
 const queryDiaryCached = async (slug: string) => {
     const hash = sha1(slug);
     const key: string = `queryDiary:${hash}`;
+    const cache = myCache.get(key);
+    if (cache) {
+        return cache;
+    }
     const value: DiaryItem | null = await redis.get(key);
     if (null === value) {
         const newValue = await queryDiary(slug);
         await redis.set(key, newValue, {ex: 86400});
         return newValue;
     }
+    myCache.set(key, value);
     return value;
 }
 
@@ -234,12 +252,17 @@ function queryBlockList(query: BlockListQuery): Promise<ListBlockChildrenRespons
 const queryBlockListCached = async (query: BlockListQuery) => {
     const hash = sha1(query);
     const key: string = `queryBlockList:${hash}`;
+    const cache = myCache.get(key);
+    if (cache) {
+        return cache;
+    }
     const value: ListBlockChildrenResponse | null = await redis.get(key);
     if (null === value) {
         const newValue = await queryBlockList(query);
         await redis.set(key, newValue, {ex: 86400});
         return newValue;
     }
+    myCache.set(key, value);
     return value;
 }
 
