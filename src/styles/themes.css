@@ -15,20 +15,23 @@
     --color-primary-shadow: 230, 239, 247;
 }
 
-.dark .theme-1 {
-    --color-primary-1: 10, 15, 23;
-    --color-primary-2: 21, 31, 46;
-    --color-primary-3: 33, 48, 69;
-    --color-primary-4: 47, 66, 92;
-    --color-primary-5: 62, 85, 115;
-    --color-primary-6: 85, 110, 138;
-    --color-primary-7: 114, 137, 161;
-    --color-primary-8: 145, 164, 184;
-    --color-primary-9: 180, 194, 207;
-    --color-primary-10: 213, 218, 222;
-    --color-primary: 85, 110, 138;
-    --color-primary-text: 114, 137, 161;
-    --color-primary-shadow: 33, 48, 69
+@media (prefers-color-scheme: dark) {
+    .theme-1 {
+        --color-primary-1: 10, 15, 23;
+        --color-primary-2: 21, 31, 46;
+        --color-primary-3: 33, 48, 69;
+        --color-primary-4: 47, 66, 92;
+        --color-primary-5: 62, 85, 115;
+        --color-primary-6: 85, 110, 138;
+        --color-primary-7: 114, 137, 161;
+        --color-primary-8: 145, 164, 184;
+        --color-primary-9: 180, 194, 207;
+        --color-primary-10: 213, 218, 222;
+        /* 85, 110, 138 */
+        --color-primary: 122, 158, 198;
+        --color-primary-text: 114, 137, 161;
+        --color-primary-shadow: 33, 48, 69
+    }
 }
 
 .theme-2 {
@@ -47,18 +50,20 @@
     --color-primary-shadow: 255, 228, 222;
 }
 
-.dark .theme-2 {
-    --color-primary-1: 23, 10, 10;
-    --color-primary-2: 46, 21, 19;
-    --color-primary-3: 69, 34, 30;
-    --color-primary-4: 92, 48, 43;
-    --color-primary-5: 115, 64, 57;
-    --color-primary-6: 138, 89, 81;
-    --color-primary-7: 161, 116, 108;
-    --color-primary-8: 184, 145, 138;
-    --color-primary-9: 207, 180, 174;
-    --color-primary-10: 230, 215, 211;
-    --color-primary: 138, 89, 81;
-    --color-primary-text: 161, 116, 108;
-    --color-primary-shadow: 69, 34, 30
+@media (prefers-color-scheme: dark) {
+    .theme-2 {
+        --color-primary-1: 23, 10, 10;
+        --color-primary-2: 46, 21, 19;
+        --color-primary-3: 69, 34, 30;
+        --color-primary-4: 92, 48, 43;
+        --color-primary-5: 115, 64, 57;
+        --color-primary-6: 138, 89, 81;
+        --color-primary-7: 161, 116, 108;
+        --color-primary-8: 184, 145, 138;
+        --color-primary-9: 207, 180, 174;
+        --color-primary-10: 230, 215, 211;
+        --color-primary: 138, 89, 81;
+        --color-primary-text: 161, 116, 108;
+        --color-primary-shadow: 69, 34, 30
+    }
 }
