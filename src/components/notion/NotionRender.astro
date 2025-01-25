@@ -13,6 +13,6 @@ const response = await queryBlockListCached({block_id: id});
 ---
 <div class={className}>
     {response.results.map((res) => (
-        <Render block={res}/>
+        <Render block={res} client:visible />
     ))}
 </div>

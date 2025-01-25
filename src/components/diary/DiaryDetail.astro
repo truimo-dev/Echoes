@@ -15,7 +15,7 @@ const { diary } = Astro.props;
 const date: Dayjs = dayjs(diary.date);
 ---
 <article>
-    <DiaryImages className="my-3" images={diary.images} />
+    <DiaryImages className="my-3" images={diary.images} client:visible />
     <NotionRender id={diary.id} />
     <p class="text-gray-800 text-xs text-right dark:text-gray-300">
         <Icon name='time'/>

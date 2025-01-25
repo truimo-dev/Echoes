@@ -43,3 +43,7 @@ p svg, span svg, a svg {
 .fill-content {
     min-height: calc(100vh - 12rem);
 }
+
+.medium-zoom-image.medium-zoom-image--opened {
+    border-radius: 0;
+}
