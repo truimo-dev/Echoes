@@ -1,9 +1,7 @@
 ---
-import dayjs from 'dayjs';
-import type {Dayjs} from 'dayjs';
 import type {DiaryItem} from '@/libs/notion';
 import Link from '@/components/ui/Link.astro';
-import Icon from '@/components/ui/Icon.astro';
+import DateTime from './DateTime.astro';
 import DiaryImages from './DiaryImages';
 import NotionRender from '@/components/notion/NotionRender.astro';
 
@@ -12,8 +10,6 @@ interface Props {
 }
 
 const { diary } = Astro.props;
-
-const date: Dayjs = dayjs(diary.date);
 ---
 <article class='article rounded-xl p-3.5 bg-zinc-600/5 dark:bg-zinc-500/20'>
     <DiaryImages className="mb-3" images={diary.images} client:visible />
@@ -23,11 +19,7 @@ const date: Dayjs = dayjs(diary.date);
             <p><Link href={`/diary/${diary.name}`}>Read More.</Link></p>
         </div>
         <div>
-            <p class="text-gray-800 text-xs text-right dark:text-gray-300">
-                <Icon name='time'/>
-                <span>&nbsp;</span>
-                <time date-time={date.toString()}>{date.format('YYYY-MM-DD')}</time>
-            </p>
+            <DateTime date={diary.date} />
         </div>
     </div>
 </article>

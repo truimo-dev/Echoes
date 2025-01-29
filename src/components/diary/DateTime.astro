@@ -1,0 +1,17 @@
+---
+import dayjs from 'dayjs';
+import type {Dayjs} from 'dayjs';
+import Icon from '@/components/ui/Icon.astro';
+
+interface Props {
+    date: string;
+}
+
+const { date: dateStr } = Astro.props;
+
+const date: Dayjs = dayjs(dateStr);
+---
+<p class="text-gray-800 text-xs text-right dark:text-gray-300">
+    <Icon name='time'/>
+    <time date-time={date.toString()}>{date.format('YYYY-MM-DD')}</time>
+</p>
