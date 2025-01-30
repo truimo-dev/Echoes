@@ -1,25 +1,30 @@
-import type {PropsWithChildren} from 'react';
-import {clsxm} from '@/libs/helper';
-import {getAnnotationsColor} from '@/components/notion/helper';
+import type {ParentComponent} from 'solid-js'
+import {clsxm} from '@/libs/helper'
+import {getAnnotationsColor} from '@/components/notion/helper'
 
-function InlineBlock({children, className, color}: PropsWithChildren<{
-    className?: string
+type BlockProps = {
+    class?: string
     color?: string
-}>) {
-    const colorClass: string | null = color ? getAnnotationsColor(color) : null
-    return <p className={clsxm('py-1 leading-normal break-words', colorClass, className)}>{children}</p>
 }
 
-function Block({children, className, color}: PropsWithChildren<{
-    className?: string
-    color?: string
-}>) {
-    const colorClass: string | null = color ? getAnnotationsColor(color) : null
+const InlineBlock: ParentComponent<BlockProps> = (props) => {
+    const colorClass = props.color ? getAnnotationsColor(props.color) : null
+
     return (
-        <div className={clsxm('py-1 leading-normal', colorClass, className)}>{children}</div>
+        <p class={clsxm('py-1 leading-normal break-words', colorClass, props.class)}>
+            {props.children}
+        </p>
     )
 }
 
-export {
-    InlineBlock, Block
+const Block: ParentComponent<BlockProps> = (props) => {
+    const colorClass = props.color ? getAnnotationsColor(props.color) : null
+
+    return (
+        <div class={clsxm('py-1 leading-normal', colorClass, props.class)}>
+            {props.children}
+        </div>
+    )
 }
+
+export {InlineBlock, Block}

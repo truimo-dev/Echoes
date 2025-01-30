@@ -1,28 +1,32 @@
-import {useEffect, useRef} from 'react'
+import type {Component} from 'solid-js'
+import {onCleanup, onMount} from 'solid-js'
 import mediumZoom from 'medium-zoom'
 
 interface ImageProps {
-    className?: string
+    class?: string
     src: string
     alt: string
 }
 
-function Image(props: ImageProps) {
-    const imgRef = useRef<HTMLImageElement>(null)
+const Image: Component<ImageProps> = (props) => {
+    let imgRef: HTMLImageElement | undefined = undefined,
+        zoom: ReturnType<typeof mediumZoom> | undefined = undefined;
 
-    useEffect(() => {
-        const zoom = mediumZoom(imgRef.current ?? void 0, {
-            background: 'var(--background)',
-        });
-
-        return () => {
-            zoom.detach();
+    onMount(() => {
+        if (imgRef) {
+            zoom = mediumZoom(imgRef, {
+                background: 'var(--background)',
+            })
         }
-    }, [imgRef.current]);
+    })
+
+    onCleanup(() => {
+        zoom?.detach()
+    })
 
     return (
-        <img src={props.src} alt={props.alt} className={props.className}
-             ref={imgRef} loading='lazy' referrerPolicy='no-referrer' />
+        <img ref={imgRef} src={props.src} alt={props.alt}
+             class={props.class} loading='lazy' referrerPolicy='no-referrer'/>
     );
 }
 

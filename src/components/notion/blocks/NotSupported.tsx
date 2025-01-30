@@ -1,15 +1,15 @@
-function NotSupported({inline}: {
+import type {Component} from 'solid-js'
+
+interface NotSupportedProps {
     inline?: boolean
-}) {
-    if (inline) {
-        return (
-            <span className="text-red-600">Not Supported Span.</span>
-        )
+}
+
+const NotSupported: Component<NotSupportedProps> = (props) => {
+    if (props.inline) {
+        return <span class="text-red-600">Not Supported Span.</span>
     }
 
-    return (
-        <div className="text-red-600">Not Supported Block.</div>
-    )
+    return <div class="text-red-600">Not Supported Block.</div>
 }
 
 export default NotSupported

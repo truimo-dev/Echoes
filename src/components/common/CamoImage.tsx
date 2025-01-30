@@ -1,6 +1,7 @@
-import {useEffect, useState} from 'react';
+import type {Component} from 'solid-js';
+import {createSignal, onCleanup, onMount} from 'solid-js';
 
-const transparentImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII='
+const transparentImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
 
 function base64ToBlob(data: string, contentType: string = 'application/octet-stream'): Blob {
     const byteArray = Uint8Array.from(atob(data), byte => byte.charCodeAt(0));
@@ -8,38 +9,38 @@ function base64ToBlob(data: string, contentType: string = 'application/octet-str
 }
 
 interface CamoImageProps {
-    src: string
-    alt: string
-    className?: string
+    src: string;
+    alt: string;
+    class?: string;
 }
 
 interface CamoData {
-    type: string
-    content: string
+    type: string;
+    content: string;
 }
 
 interface CamoBody {
-    src: string
+    src: string;
 }
 
-function getCamoOnline(body: CamoBody): Promise<CamoData> {
-    return fetch('/api/camo', {
+async function getCamoOnline(body: CamoBody): Promise<CamoData> {
+    const response = await fetch('/api/camo', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(body),
-    }).then((response: Response) => {
-        const headers = response.headers;
-        const type: string = headers.has('X-Content-Type') ? headers.get('X-Content-Type')! : 'application/octet-stream';
-        return new Promise<CamoData>((resolve, reject) => {
-            response.text().then((data: string) => {
-                const res = {type, content: data};
-                if ('localStorage' in window) {
-                    window.localStorage.setItem(`camo_${body.src}`, JSON.stringify(res));
-                }
-                resolve(res);
-            }).catch(reject);
-        });
     });
+
+    const headers = response.headers;
+    const type = headers.get('X-Content-Type') || 'application/octet-stream';
+    const content = await response.text();
+
+    const data = {type, content};
+
+    if ('localStorage' in window) {
+        window.localStorage.setItem(`camo_${body.src}`, JSON.stringify(data));
+    }
+
+    return data;
 }
 
 function getCamoCache(body: CamoBody): Promise<CamoData> {
@@ -48,16 +49,14 @@ function getCamoCache(body: CamoBody): Promise<CamoData> {
             const item = window.localStorage.getItem(`camo_${body.src}`);
             if (item) {
                 try {
-                    resolve(JSON.parse(item));
+                    const cached = JSON.parse(item);
+                    resolve(cached);
                 } catch (e) {
-                    reject(e);
+                    window.localStorage.removeItem(`camo_${body.src}`);
                 }
-            } else {
-                reject(new Error('No Camo cache'));
             }
-        } else {
-            reject(new Error('No session storage'));
         }
+        reject(new Error('No valid cache found'));
     });
 }
 
@@ -66,28 +65,35 @@ function getObjectURL(data: CamoData): string {
     return URL.createObjectURL(blob);
 }
 
-function CamoImage({ src, alt, className }: CamoImageProps) {
-    const [url, setUrl] = useState<string>(transparentImage);
+const CamoImage: Component<CamoImageProps> = (props) => {
+    const [url, setUrl] = createSignal<string>(transparentImage);
 
-    useEffect(() => {
-        const data = { src };
+    onMount(() => {
+        const data = {src: props.src};
 
-        getCamoCache(data).catch(() => {
-            return getCamoOnline(data)
-        }).then((data: CamoData) => {
-            setUrl(getObjectURL(data));
-        }).catch((error) => {
-            console.error(error);
-        });
+        getCamoCache(data)
+            .catch(() => getCamoOnline(data))
+            .then((data: CamoData) => {
+                const objectUrl = getObjectURL(data);
+                setUrl(objectUrl);
+            })
+            .catch((error) => {
+                console.error('Failed to load image:', error);
+            });
+    });
 
-        return () => {
-            URL.revokeObjectURL(url);
+    onCleanup(() => {
+        const currentUrl = url();
+        if (transparentImage !== currentUrl) {
+            URL.revokeObjectURL(currentUrl);
         }
-    }, [src])
+    });
 
     return (
-        <img src={url} alt={alt} className={className} loading='lazy' referrerPolicy='no-referrer'></img>
-    )
-}
+        <img src={url()} alt={props.alt} class={props.class}
+             loading="lazy" referrerPolicy="no-referrer"
+        />
+    );
+};
 
 export default CamoImage;

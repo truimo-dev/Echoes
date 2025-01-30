@@ -1,6 +1,6 @@
-import type React from 'react'
+import type { ComponentProps } from 'solid-js'
 
-export type IconProps = React.SVGAttributes<SVGElement>
+export type IconProps = ComponentProps<'svg'>
 
 export { AtomIcon } from './AtomIcon'
 export { BilibiliIcon } from './BilibiliIcon'

@@ -11,7 +11,7 @@ interface Props {
 const { diary } = Astro.props;
 ---
 <article>
-    <DiaryImages className="my-3" images={diary.images} client:visible />
+    <DiaryImages class="my-3" images={diary.images} client:visible />
     <NotionRender id={diary.id} />
     <DateTime date={diary.date} />
 </article>

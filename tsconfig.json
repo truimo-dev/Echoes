@@ -9,8 +9,8 @@
     "dist"
   ],
   "compilerOptions": {
-    "jsxImportSource": "react",
-    "jsx": "react-jsx",
+    "jsxImportSource": "solid-js",
+    "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
       "@/*": [
@@ -19,6 +19,6 @@
       "~/*": [
         "./*"
       ]
-    },
+    }
   }
 }

@@ -1,20 +1,25 @@
 import type {BlockRenderProps} from '@/components/notion/helper'
+import {Show} from 'solid-js'
 import RichText from '@/components/notion/blocks/RichText'
 import {InlineBlock} from '@/components/notion/blocks/Block'
 import NotSupported from '@/components/notion/blocks/NotSupported'
 
-
-function Paragraph({block}: BlockRenderProps) {
-    if ('paragraph' !== block.type) {
-        return <NotSupported />
+function Paragraph(props: BlockRenderProps) {
+    const isParagraph = () => {
+        if (props.block.type === 'paragraph') {
+            return props.block.paragraph
+        }
+        return undefined
     }
 
-    const paragraph = block.paragraph
-
     return (
-        <InlineBlock color={paragraph.color}>
-            <RichText rich_text={paragraph.rich_text}/>
-        </InlineBlock>
+        <Show when={isParagraph()} fallback={<NotSupported/>}>
+            {(paragraph) => (
+                <InlineBlock color={paragraph().color}>
+                    <RichText rich_text={paragraph().rich_text}/>
+                </InlineBlock>
+            )}
+        </Show>
     )
 }
 

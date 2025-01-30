@@ -3,9 +3,9 @@ import {defineConfig, envField} from 'astro/config';
 
 import tailwind from '@astrojs/tailwind';
 
-import react from '@astrojs/react';
-
 import vercel from '@astrojs/vercel';
+
+import solidJs from '@astrojs/solid-js';
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,7 +13,7 @@ export default defineConfig({
         tailwind({
             nesting: true,
         }),
-        react(),
+        solidJs()
     ],
     compressHTML: true,
     output: 'server',

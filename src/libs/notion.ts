@@ -1,4 +1,3 @@
-import {cache} from 'react';
 import NodeCache from 'node-cache';
 import {waitUntil} from '@vercel/functions';
 import {getPlaiceholder} from 'plaiceholder';
@@ -328,7 +327,7 @@ async function queryImageInfo(href: string): Promise<ImageInfo | null> {
     return null
 }
 
-const queryImageInfoCached = cache(queryImageInfo)
+// const queryImageInfoCached = cache(queryImageInfo);
 
 async function fetchImageInfo(href: string): Promise<ImageInfo> {
     const info: ImageInfo = {
@@ -410,7 +409,7 @@ async function insertImageInfo(info: ImageInfo) {
 }
 
 async function getImageInfo(href: string): Promise<ImageInfo> {
-    const query = await queryImageInfoCached(href)
+    const query = await queryImageInfo(href)
 
     if (query) {
         return query
