@@ -1,0 +1,27 @@
+---
+import Layout from '@/layouts/MainLayout.astro';
+import Link from '@/components/ui/Link.astro';
+import Header from '@/components/home/Header.astro';
+import Section from '@/components/home/Section.astro';
+---
+<Layout title="浅小沫" description="我是浅小沫，这是我的网站。">
+    <div class="mx-auto max-w-3xl">
+        <article class="space-y-4">
+            <Header title="浅小沫" description="遇见即是上上签" />
+            <div class="space-y-10 mx-4">
+                <Section>
+                    <p>你好！</p>
+                    <p>我是浅小沫（简称：<span class="text-primary">QXM</span>）。我是软件开发者。</p>
+                </Section>
+                <Section>
+                    <p>...</p>
+                    <p>也许你可以四处看看。</p>
+                </Section>
+                <Section>
+                    <h2 id="contact">联系我：</h2>
+                    <p>电子邮件：<Link href="mailto:hi@xdm.me">hi@qxm.me</Link></p>
+                </Section>
+            </div>
+        </article>
+    </div>
+</Layout>

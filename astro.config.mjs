@@ -21,6 +21,7 @@ export default defineConfig({
         locales: ["en", "zh-cn"],
         routing: {
             prefixDefaultLocale: false,
+            fallbackType: "rewrite",
         },
     },
     output: 'server',
