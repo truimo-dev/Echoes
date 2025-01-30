@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@astrojs/solid-js": "^5.0.4",
-    "@astrojs/tailwind": "^5.1.4",
+    "@astrojs/tailwind": "^6.0.0",
     "@astrojs/vercel": "^8.0.1",
     "@notionhq/client": "^2.2.15",
     "@upstash/ratelimit": "^2.0.5",
