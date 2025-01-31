@@ -1,3 +1,5 @@
+@reference 'tailwindcss/theme.css';
+
 @font-face {
     font-family: 'icon';
     font-display: swap;

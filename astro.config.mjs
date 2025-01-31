@@ -1,7 +1,7 @@
 // @ts-check
 import {defineConfig, envField} from 'astro/config';
 
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from "@tailwindcss/vite";
 
 import vercel from '@astrojs/vercel';
 
@@ -9,10 +9,12 @@ import solidJs from '@astrojs/solid-js';
 
 // https://astro.build/config
 export default defineConfig({
+    vite: {
+        plugins: [
+            tailwindcss()
+        ],
+    },
     integrations: [
-        tailwind({
-            nesting: true,
-        }),
         solidJs()
     ],
     compressHTML: true,
