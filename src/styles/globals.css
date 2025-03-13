@@ -23,7 +23,7 @@
 body {
     color: var(--foreground);
     background: var(--background);
-    font-family: 'GeistVF', Arial, Helvetica, sans-serif;
+    font-family: 'Inter', 'GeistVF', Arial, Helvetica, sans-serif;
 }
 
 .text-balance {
