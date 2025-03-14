@@ -19,7 +19,7 @@ importers:
         version: 5.2.5
       '@notionhq/client':
         specifier: ^2.2.15
-        version: 2.2.17
+        version: 2.3.0
       '@tailwindcss/vite':
         specifier: ^4.0.1
         version: 4.0.14(vite@6.2.0(@types/node@22.13.10)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.0))
@@ -627,8 +627,8 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
-  '@notionhq/client@2.2.17':
-    resolution: {integrity: sha512-whkUc2RFAk7Vo93todfwsK6bxEHrBg4JSUHN+8cvopZGKsnU8aVL4JtJ6W2cexRz0Bp0AfznHsY7eD8/vNgMCw==}
+  '@notionhq/client@2.3.0':
+    resolution: {integrity: sha512-l7WqTCpQqC+HibkB9chghONQTYcxNQT0/rOJemBfmuKQRTu2vuV8B3yA395iKaUdDo7HI+0KvQaz9687Xskzkw==}
     engines: {node: '>=12'}
 
   '@oslojs/encoding@1.1.0':
@@ -2828,7 +2828,7 @@ snapshots:
       - encoding
       - supports-color
 
-  '@notionhq/client@2.2.17':
+  '@notionhq/client@2.3.0':
     dependencies:
       '@types/node-fetch': 2.6.12
       node-fetch: 2.7.0
