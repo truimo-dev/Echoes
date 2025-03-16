@@ -23,7 +23,7 @@
 body {
     color: var(--foreground);
     background-color: var(--background);
-    background-image: url(./bg.png);
+    background-image: url('/bg.png');
     font-family: 'Inter', 'GeistVF', Arial, Helvetica, sans-serif;
 }
 
