@@ -9,6 +9,6 @@ interface Props {
 const { title, description, icon, href } = Astro.props.it;
 ---
 <a href={href} title={title} target='_blank' class='text-center inline-block space-y-2'>
-    <CamoImage client:idle src={icon} alt={description} class='inline-block h-14 w-14 aspect-square rounded-xl'/>
+    <CamoImage src={icon} alt={description} class='inline-block h-14 w-14 aspect-square rounded-xl'/>
     <p>{title}</p>
 </a>
