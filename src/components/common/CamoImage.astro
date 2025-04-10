@@ -1,0 +1,16 @@
+---
+import { generateCamoUrl } from '@/libs/camo'
+
+interface Props {
+    src: string;
+    alt: string;
+    class?: string;
+}
+
+const {
+    class: className, alt, src
+} = Astro.props;
+
+const camoUrl = generateCamoUrl(src)
+---
+<img src={camoUrl} alt={alt} class={className} loading="lazy" />

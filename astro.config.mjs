@@ -56,6 +56,10 @@ export default defineConfig({
                 context: 'server',
                 access: 'public',
             }),
+            CAMO_KEY: envField.string({
+                context: 'server',
+                access: 'secret',
+            }),
         }
     },
     adapter: vercel({
