@@ -18,14 +18,6 @@ export default defineConfig({
         solidJs()
     ],
     compressHTML: true,
-    i18n: {
-        defaultLocale: "en",
-        locales: ["en", "zh-cn"],
-        routing: {
-            prefixDefaultLocale: false,
-            fallbackType: "rewrite",
-        },
-    },
     output: 'server',
     env: {
         schema: {
