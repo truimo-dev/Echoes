@@ -27,6 +27,12 @@ body {
     font-family: 'Inter', 'GeistVF', Arial, Helvetica, sans-serif;
 }
 
+@media (prefers-color-scheme: dark) {
+    body {
+        background-image: url('/bg-dark.png');
+    }
+}
+
 .text-balance {
     text-wrap: balance;
 }
