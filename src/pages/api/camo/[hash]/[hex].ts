@@ -5,11 +5,11 @@ const UA: string = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 
 export const GET: APIRoute = async ({ params, request }) => {
     const referer = request.headers.get('Referer')
-    // if (referer === null) {
-    //     return new Response('Exception Request', {
-    //         status: 400,
-    //     })
-    // }
+    if (referer === null) {
+        return new Response('Exception Request', {
+            status: 400,
+        })
+    }
 
     const { hash = '', hex = '' } = params
 
