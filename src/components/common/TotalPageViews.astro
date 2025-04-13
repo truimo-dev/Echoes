@@ -1,11 +1,23 @@
 ---
-import {kvKeys} from '@/constant/kv'
-import {redis} from '@/libs/redis'
 import Icon from '@/components/ui/Icon.astro'
-
-import { VERCEL_ENV } from 'astro:env/server'
-
-const views: number = VERCEL_ENV === 'production' ?
-    await redis.incr(kvKeys.totalPageViews) : 261101
 ---
-<span><Icon name="friend"/>&nbsp;Total page views&nbsp;{views}</span>
+<page-views>
+    <span class="print:hidden"><Icon name="friend"/>&nbsp;Total page views&nbsp;<span class="views-count">-</span></span>
+</page-views>
+
+<script>
+import { ofetch } from 'ofetch'
+
+class PageViews extends HTMLElement {
+    connectedCallback() {
+        const view = this.querySelector('.views-count')
+        ofetch('/api/views').then((data) => {
+            if (null !== view) {
+                view.textContent = data.views
+            }
+        })
+    }
+}
+
+customElements.define('page-views', PageViews)
+</script>

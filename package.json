@@ -24,6 +24,7 @@
     "image-size": "^2.0.0",
     "medium-zoom": "^1.1.0",
     "node-cache": "^5.1.2",
+    "ofetch": "^1.4.1",
     "plaiceholder": "^3.0.0",
     "solid-js": "^1.9.4",
     "tailwind-merge": "^3.0.0",
