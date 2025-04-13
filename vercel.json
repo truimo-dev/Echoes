@@ -4,7 +4,7 @@
             "source": "/api/views",
             "headers": [
                 {
-                    "key": "CDN-Cache-Control",
+                    "key": "Vercel-CDN-Cache-Control",
                     "value": "none"
                 }, {
                     "key": "Cache-Control",

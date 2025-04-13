@@ -11,7 +11,10 @@ import { ofetch } from 'ofetch'
 class PageViews extends HTMLElement {
     connectedCallback() {
         const view = this.querySelector('.views-count')
-        ofetch('/api/views', { priority: 'low' }).then((data) => {
+        ofetch('/api/views', {
+            priority: 'low',
+            headers: { accept: 'application/json' }
+        }).then((data) => {
             if (null !== view) {
                 requestAnimationFrame(() => {
                     view.textContent = data.views
