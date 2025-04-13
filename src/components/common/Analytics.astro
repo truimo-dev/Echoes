@@ -1,11 +1,8 @@
 ---
-import VercelAnalytics from '@vercel/analytics/astro';
+import { VERCEL_ENV } from 'astro:env/server'
 
-import { VERCEL_ENV } from 'astro:env/server';
-
-const isProd: boolean = VERCEL_ENV === 'production';
+const isProd: boolean = VERCEL_ENV === 'production'
 ---
 {isProd && (
     <script is:inline defer src="/_vercel/speed-insights/script.js" />
-    <VercelAnalytics />
 )}
