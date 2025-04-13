@@ -15,5 +15,9 @@ export const GET: APIRoute = async ({ request }) => {
 
     return Response.json({
         views: views
+    }, {
+        headers: {
+            'Cache-Control': 'no-store'
+        }
     })
 }
