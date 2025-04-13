@@ -56,7 +56,12 @@ export default defineConfig({
     },
     adapter: vercel({
         edgeMiddleware: true,
-        isr: true,
+        isr: {
+            bypassToken: '87c151e1-94ab-466b-809a-5d007ed88f9f',
+            exclude: [
+                '/api/views',
+            ]
+        },
         imageService: true,
         imagesConfig: {
             sizes: [16, 32, 48, 64, 96, 128, 256, 384, 640],
