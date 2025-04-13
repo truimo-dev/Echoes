@@ -3,39 +3,30 @@ import Layout from '@/layouts/MainLayout.astro';
 
 const list = [
     {
-        style: 'sky',
         content: '我是否喜欢谁，与谁喜不喜欢我，半颗铜钱的关系都没有!就像……，就像山看水，水流山还在，喜欢之人，只管远去，我只管喜欢。',
         title: '剑来',
     }, {
-        style: 'pink',
         content: '世界上有太多孤独的人，害怕先踏出第一步。',
         title: '绿皮书',
     }, {
-        style: 'green',
         content: '遇事不决，可问春风，春风不语，即随本心。',
         title: '剑来',
     }, {
-        style: 'grape2',
         content: '道理全在书上，做人却在书外。',
         title: '剑来',
     }, {
-        style: 'red',
         content: '“我们笑着说再见 却深知再见遥遥无期。”',
         title: '海上钢琴师',
     }, {
-        style: 'orange',
         content: '我们仰望同一片天空 却看着不同的地方。',
         title: '秒速五厘米',
     }, {
-        style: 'sky',
         content: '我从没有因为住在哪里而自卑，也没有太多地想过贫穷，我知道我们不富裕，但我感觉我没有错过任何东西。',
         title: '怦然心动',
     }, {
-        style: 'grape1',
         content: '这短短的一生，我们最终都会失去，你何不大胆一点，爱一个人，攀一座山，追一个梦。',
         title: '大鱼海棠',
     }, {
-        style: 'blue',
         content: '遇见的都是天意，拥有的都是幸运，世界上有一千种等待，最好的那种叫“未来可期”。',
         title: '宫崎骏',
     }
@@ -49,7 +40,7 @@ const list = [
         <div class="select-none mx-4 mt-4">
             <div class="space-y-6">
                 {list.map((it) => (
-                    <blockquote class="excerpt py-3 px-4" class:list={it.style}>
+                    <blockquote class="excerpt py-3 px-4">
                         <p class="mb-2">{it.content}</p>
                         <p class="text-sm text-right">Form: {it.title}</p>
                     </blockquote>
@@ -61,56 +52,16 @@ const list = [
 
 <style>
 .excerpt {
-    --border-color: rgb(13, 196, 217);
-    --bg-color: rgba(113, 208, 218, 0.15);
     border-left-width: 3px;
     border-left-style: solid;
-    border-left-color: var(--border-color);
-    background-color: var(--bg-color);
+    border-left-color: #333333;
+    background-color: #f7f7f7;
 }
 
-.excerpt.red {
-    --border-color: rgb(232, 69, 126);
-    --bg-color: rgba(227, 176, 194, 0.15);
-}
-
-.excerpt.orange {
-    --border-color: rgb(238, 152, 23);
-    --bg-color: rgba(222, 189, 140, 0.15);
-}
-
-.excerpt.yellow {
-    --border-color: rgb(231, 231, 85);
-    --bg-color: rgba(230, 230, 188, 0.15);
-}
-
-.excerpt.grape {
-    --border-color: rgb(155, 51, 230);
-    --bg-color: rgba(196, 161, 222, 0.15);
-}
-
-.excerpt.grape1 {
-    --border-color: rgb(179, 30, 164);
-    --bg-color: rgba(196, 115, 188, 0.15);
-}
-
-.excerpt.blue {
-    --border-color: rgb(62, 56, 224);
-    --bg-color: rgba(166, 164, 219, 0.15);
-}
-
-.excerpt.pink {
-    --border-color: rgb(228, 73, 86);
-    --bg-color: rgba(225, 178, 182, 0.15);
-}
-
-.excerpt.grape2 {
-    --border-color: rgb(127, 77, 245);
-    --bg-color: rgba(201, 186, 237, 0.15);
-}
-
-.excerpt.green {
-    --border-color: rgb(176, 213, 26);
-    --bg-color: rgba(195, 211, 130, 0.15);
+@media (prefers-color-scheme: dark) {
+    .excerpt {
+        border-left-color: #3b434b;
+        background-color: #252527;
+    }
 }
 </style>
