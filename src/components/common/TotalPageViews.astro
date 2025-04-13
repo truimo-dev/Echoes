@@ -1,15 +1,11 @@
 ---
-import {kvKeys} from '@/constant/kv';
-import {redis} from '@/libs/redis';
-import Icon from '@/components/ui/Icon.astro';
+import {kvKeys} from '@/constant/kv'
+import {redis} from '@/libs/redis'
+import Icon from '@/components/ui/Icon.astro'
 
-import { VERCEL_ENV } from 'astro:env/server';
+import { VERCEL_ENV } from 'astro:env/server'
 
-let views: number
-if (VERCEL_ENV === 'production') {
-    views = await redis.incr(kvKeys.totalPageViews)
-} else {
-    views = 241101
-}
+const views: number = VERCEL_ENV === 'production' ?
+    await redis.incr(kvKeys.totalPageViews) : 261101
 ---
 <span><Icon name="friend"/>&nbsp;Total page views&nbsp;{views}</span>
