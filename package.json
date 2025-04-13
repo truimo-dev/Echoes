@@ -27,7 +27,8 @@
     "plaiceholder": "^3.0.0",
     "solid-js": "^1.9.4",
     "tailwind-merge": "^3.0.0",
-    "tailwindcss": "^4.0.1"
+    "tailwindcss": "^4.0.1",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@types/node": "^22.10.5"
