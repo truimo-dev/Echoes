@@ -1,5 +1,18 @@
 {
-    "headers": [],
+    "headers": [
+        {
+            "source": "/api/views",
+            "headers": [
+                {
+                    "key": "CDN-Cache-Control",
+                    "value": "none"
+                }, {
+                    "key": "Cache-Control",
+                    "value": "no-store"
+                }
+            ]
+        }
+    ],
     "rewrites": [
         {
             "source": "/_next/image",
