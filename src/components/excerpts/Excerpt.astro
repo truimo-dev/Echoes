@@ -1,32 +1,58 @@
 ---
+import dayjs from '@/libs/dayjs'
+
 interface Excerpt {
     content: string
     title?: string
+    time?: number
 }
 
 interface Props {
     data: Excerpt
 }
 
-const { data } = Astro.props;
+const { data } = Astro.props, formatStr = 'YYYY-MM-DD HH:mm'
+const time = data.time ? dayjs(data.time * 1e3) : undefined
 ---
 <blockquote class="excerpt py-3 px-4">
-    <p class="mb-2">{data.content}</p>
-    <p class="text-sm text-right">Form: {data.title}</p>
+    <p>{data.content}</p>
+    {data.title && (
+        <p class="text-sm text-right mt-2">Form: {data.title}</p>
+    )}
+    {time && (
+        <p class="text-sm text-right mt-2">
+            Time: <time>{time.format(formatStr)}</time>
+        </p>
+    )}
 </blockquote>
 
 <style>
 .excerpt {
+    font-size: 15px;
     border-left-width: 3px;
     border-left-style: solid;
     border-left-color: #333333;
     background-color: #f7f7f7;
 }
 
+.excerpt .text-sm {
+    font-size: 14px;
+}
+
 @media (prefers-color-scheme: dark) {
     .excerpt {
         border-left-color: #3b434b;
         background-color: #252527;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .excerpt {
+        font-size: 13px;
+    }
+
+    .excerpt .text-sm {
+        font-size: 12px;
     }
 }
 </style>

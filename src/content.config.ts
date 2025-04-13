@@ -16,6 +16,7 @@ const excerpts = defineCollection({
         id: z.string(),
         content: z.string(),
         title: z.string().optional(),
+        time: z.number().optional(),
     })
 })
 
