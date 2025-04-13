@@ -56,11 +56,14 @@ export default defineConfig({
     },
     adapter: vercel({
         edgeMiddleware: true,
+        isr: true,
         imageService: true,
         imagesConfig: {
             sizes: [16, 32, 48, 64, 96, 128, 256, 384, 640],
             domains: [],
         },
-        isr: true,
+        webAnalytics: {
+            enabled: true,
+        }
     }),
 });

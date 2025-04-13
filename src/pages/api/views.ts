@@ -17,7 +17,8 @@ export const GET: APIRoute = async ({ request }) => {
         views: views
     }, {
         headers: {
-            'Cache-Control': 'no-store'
+            'Cache-Control': 'no-store',
+            'CDN-Cache-Control': 'none',
         }
     })
 }
