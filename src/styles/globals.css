@@ -12,13 +12,13 @@
     }
 }
 
-@font-face {
+/* @font-face {
     font-family: 'GeistVF';
     src: url('/fonts/GeistVF.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
-}
+} */
 
 body {
     color: var(--foreground);
