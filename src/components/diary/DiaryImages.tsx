@@ -1,11 +1,12 @@
-import {For, Match, mergeProps, Show, Switch} from 'solid-js'
-import type {DiaryImage} from '@/libs/notion'
-import {clsxm} from '@/libs/helper'
+import { z } from 'zod'
+import { For, Match, mergeProps, Show, Switch } from 'solid-js'
+import { clsxm } from '@/libs/helper'
+import { imageSchema } from '@/libs/schema'
 import Image from './Image'
 import styles from './DiaryImages.module.css'
 
 interface DiaryImagesProps {
-    images: DiaryImage[]
+    images: Array<z.infer<typeof imageSchema>>
     class?: string
 }
 
@@ -20,7 +21,7 @@ function DiaryImages(props: DiaryImagesProps) {
                         <div class="w-full md:w-[80%]">
                             <figure class="relative w-full">
                                 <Image class={clsxm('max-w-full object-cover', styles.img)}
-                                    src={props.images[0].url} alt={props.images[0].name}
+                                    src={props.images[0].src} alt={props.images[0].name}
                                 />
                             </figure>
                         </div>
@@ -31,7 +32,7 @@ function DiaryImages(props: DiaryImagesProps) {
                                 {(image) => (
                                     <figure class="relative w-full aspect-square">
                                         <Image class={clsxm('h-full max-w-full object-cover', styles.img)}
-                                            src={image.url} alt={image.name}
+                                            src={image.src} alt={image.name}
                                         />
                                     </figure>
                                 )}
@@ -44,7 +45,7 @@ function DiaryImages(props: DiaryImagesProps) {
                                 {(image) => (
                                     <figure class="relative w-full aspect-square">
                                         <Image class={clsxm('h-full max-w-full object-cover', styles.img)}
-                                            src={image.url} alt={image.name}
+                                            src={image.src} alt={image.name}
                                         />
                                     </figure>
                                 )}

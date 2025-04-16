@@ -1,15 +1,19 @@
 ---
-import type {DiaryItem} from '@/libs/notion';
-import DiaryCard from '@/components/diary/DiaryCard.astro';
+import type { CollectionEntry } from 'astro:content'
+import { getCollection } from 'astro:content'
+import dayjs from 'dayjs'
+import DiaryCard from '@/components/diary/DiaryCard.astro'
 
-interface Props {
-    list: DiaryItem[]
+interface Diary extends CollectionEntry<'diary'> {
 }
 
-const { list } = Astro.props;
+const diary = await getCollection('diary')
+const sortedDiary = diary.sort((a, b) => {
+    return dayjs(b.data.time).valueOf() - dayjs(a.data.time).valueOf()
+})
 ---
 <div class="grid grid-cols-1 gap-6 select-none">
-    {list.map((item: DiaryItem) => (
+    {sortedDiary.map((item: Diary) => (
         <DiaryCard diary={item} />
     ))}
 </div>

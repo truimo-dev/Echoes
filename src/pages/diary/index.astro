@@ -1,13 +1,6 @@
 ---
-import { queryDiaryListCached } from '@/libs/notion';
-import Layout from '@/layouts/MainLayout.astro';
-import DiaryList from '@/components/diary/DiaryList.astro';
-
-const list = await queryDiaryListCached({
-    filter: {
-        type: 'words',
-    }
-});
+import Layout from '@/layouts/MainLayout.astro'
+import DiaryList from '@/components/diary/DiaryList.astro'
 ---
 <Layout title='Diary' description='There are my diary.'>
     <div class="mx-auto max-w-3xl">
@@ -15,7 +8,7 @@ const list = await queryDiaryListCached({
             <p class="text-2xl font-bold">Latest Diary💫</p>
         </div>
         <div class="select-none mx-4 mt-4">
-            <DiaryList list={list} />
+            <DiaryList />
         </div>
     </div>
 </Layout>

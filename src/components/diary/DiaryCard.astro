@@ -1,25 +1,27 @@
 ---
-import type {DiaryItem} from '@/libs/notion';
-import Link from '@/components/ui/Link.astro';
-import DateTime from './DateTime.astro';
-import DiaryImages from './DiaryImages';
-import NotionRender from '@/components/notion/NotionRender.astro';
+import type { CollectionEntry } from 'astro:content'
+import { render } from 'astro:content'
+import Link from '@/components/ui/Link.astro'
+import DateTime from './DateTime.astro'
+import DiaryImages from './DiaryImages'
 
 interface Props {
-    diary: DiaryItem;
+    diary: CollectionEntry<'diary'>
 }
 
-const { diary } = Astro.props;
+const { diary } = Astro.props
+
+const { Content  } = await render(diary)
 ---
 <article class='article rounded-xl p-3.5 bg-zinc-600/5 dark:bg-zinc-500/20'>
-    <DiaryImages class="mb-3" images={diary.images} client:visible />
-    <NotionRender id={diary.id} />
+    <DiaryImages class="mb-3" images={diary.data.images} client:visible />
+    <Content />
     <div class="flex items-center justify-between">
         <div class="text-gray-800 text-xs text-left dark:text-gray-300">
-            <p><Link href={`/diary/${diary.name}`}>Read More.</Link></p>
+            <p><Link href={`/diary/${diary.id}`}>Read More.</Link></p>
         </div>
         <div>
-            <DateTime date={diary.date} />
+            <DateTime date={diary.data.time} />
         </div>
     </div>
 </article>
