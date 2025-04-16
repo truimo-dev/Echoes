@@ -1,5 +1,6 @@
 ---
 import type {HTMLAttributes} from 'astro/types';
+import Link from '@/components/ui/Link.astro'
 import TotalPageViews from './TotalPageViews.astro';
 
 interface Props extends HTMLAttributes<'p'> {
@@ -11,5 +12,5 @@ const {
 } = Astro.props;
 ---
 <p class={className}>
-    <TotalPageViews />
+    Writing with <Link href="https://github.com/truimo-dev/Echoes" target="_blank">Echoes</Link>. <TotalPageViews />
 </p>
