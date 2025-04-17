@@ -13,7 +13,7 @@ const { diary } = Astro.props
 
 const { Content } = await render(diary)
 ---
-<article class='article rounded-xl p-3.5 bg-zinc-600/5 dark:bg-zinc-500/20'>
+<article class="article rounded-xl p-3.5 bg-zinc-600/5 dark:bg-zinc-500/20">
     <DiaryImages class="mb-3" images={diary.data.images} client:visible />
     <Content />
     <div class="flex items-center justify-between">
@@ -26,9 +26,16 @@ const { Content } = await render(diary)
     </div>
 </article>
 
-<style>
+<style is:global>
 .article {
     width: fit-content;
     max-width: 100%;
+    font-size: 15px;
+}
+
+@media screen and (max-width: 576px) {
+    .article {
+        font-size: 13px;
+    }
 }
 </style>

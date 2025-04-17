@@ -1,34 +1,3 @@
-import type {BlockObjectResponse, TextRichTextItemResponse} from '@notionhq/client/build/src/api-endpoints'
-
-export interface BlockRenderProps {
-    block: BlockObjectResponse
-}
-
-function getAnnotationsClass(annotations: TextRichTextItemResponse['annotations']) {
-    const classes: string[] = []
-    if (annotations.bold) {
-        classes.push('font-bold')
-    }
-    if (annotations.italic) {
-        classes.push('italic')
-    }
-    if (annotations.strikethrough) {
-        classes.push('line-through')
-    }
-    if (annotations.underline) {
-        classes.push('underline')
-    }
-    if (annotations.code) {
-        classes.push('font-mono')
-        classes.push('bg-gray-100')
-        classes.push('p-1')
-    }
-    if (annotations.color) {
-        classes.push(getAnnotationsColor(annotations.color))
-    }
-    return classes.join(' ')
-}
-
 function getAnnotationsColor(color: string): string {
     switch (color) {
     case 'default':
@@ -75,5 +44,5 @@ function getAnnotationsColor(color: string): string {
 }
 
 export {
-    getAnnotationsColor, getAnnotationsClass
+    getAnnotationsColor
 }
