@@ -1,14 +1,14 @@
 ---
-import {friends} from '@/constant/friends';
-import Layout from '@/layouts/MainLayout.astro';
-import Link from '@/components/ui/Link.astro';
-import Friend from '@/components/friends/Friend.astro';
+import { friends } from '@/constant/friends'
+import Layout from '@/layouts/MainLayout.astro'
+import Link from '@/components/ui/Link.astro'
+import Friend from '@/components/friends/Friend.astro'
 ---
 <Layout title='Friends' description='There are friend Links.'>
     <div class="mx-auto max-w-3xl">
         <section class="mx-4 select-none">
             <h1 class="text-2xl font-bold">Friends</h1>
-            <h3>You can visit my friends&#39; websites. <Link class="underline" href="https://github.com/Truimo/me?tab=readme-ov-file#become-friends-with-me" target="_blank">Become friends</Link> with me.</h3>
+            <h3>You can visit my friends&#39; websites. <Link class="underline" href="mailto:hi@xdm.me" target="_blank">Become friends</Link> with me.</h3>
             <div class="space-x-6 my-4">
                 {friends.map((item) => (
                     <Friend it={item}/>
