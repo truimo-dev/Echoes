@@ -14,7 +14,7 @@ const { entry } = Astro.props
     <PostTags class="mb-2" tags={entry.data.tags} />
     <div class="flex items-end justify-between">
         <div class="text-left">
-            <p class="text-xl font-bold"><Link href={`/posts/${entry.id}`}>{entry.data.title}</Link></p>
+            <p class="text-lg font-bold"><Link href={`/posts/${entry.id}`}>{entry.data.title}</Link></p>
         </div>
         <div>
             <DateTime date={entry.data.time} />
