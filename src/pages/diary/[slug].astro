@@ -1,18 +1,18 @@
 ---
-import { getEntry, render } from 'astro:content'
-import Layout from '@/layouts/MainLayout.astro';
+import { getEntry } from 'astro:content'
+import Layout from '@/layouts/MainLayout.astro'
 import DiaryDetail from '@/components/diary/DiaryDetail.astro'
 
-const { slug } = Astro.params;
+const { slug } = Astro.params
 
 if (void 0 === slug) {
-    return Astro.redirect('/404');
+    return Astro.redirect('/404')
 }
 
-const entry = await getEntry('diary', slug);
+const entry = await getEntry('diary', slug)
 
 if (!entry) {
-    return Astro.redirect('/404');
+    return Astro.redirect('/404')
 }
 
 const title = `Diary # ${entry.data.title.length > 0 ? entry.data.title : entry.id}`
@@ -20,7 +20,7 @@ const title = `Diary # ${entry.data.title.length > 0 ? entry.data.title : entry.
 <Layout title={title} description='There are my diary.'>
     <div class="mx-auto max-w-3xl">
         <div class="mx-4">
-            <p class="text-2xl font-bold">{title}</p>
+            <p class="text-lg font-bold">{title}</p>
         </div>
         <div class="select-none mx-4">
             <DiaryDetail diary={entry}/>

@@ -5,6 +5,11 @@ const imageSchema = z.object({
     src: z.string(),
 })
 
+const tagSchema = z.object({
+    name: z.string().default('不分类'),
+    color: z.string().default('default'),
+})
+
 export {
-    imageSchema
+    imageSchema, tagSchema
 }

@@ -1,15 +1,15 @@
 ---
-import type {DiaryItem} from '@/libs/notion';
-import PostCard from './PostCard.astro';
+import type { CollectionEntry } from 'astro:content'
+import { getCollection } from 'astro:content'
+import PostCard from './PostCard.astro'
 
-interface Props {
-    list: DiaryItem[]
-}
+interface Post extends CollectionEntry<'blog'> {
+} 
 
-const { list } = Astro.props;
+const blog = await getCollection('blog')
 ---
 <div class="grid grid-cols-1 gap-6 select-none">
-    {list.map((item: DiaryItem) => (
-        <PostCard diary={item} />
+    {blog.map((item: Post) => (
+        <PostCard entry={item} />
     ))}
 </div>

@@ -1,7 +1,7 @@
 import { defineCollection, z } from 'astro:content'
 import { file, glob } from 'astro/loaders'
 import { v5 as uuidv5 } from 'uuid'
-import { imageSchema } from '@/libs/schema'
+import { imageSchema, tagSchema } from '@/libs/schema'
 
 const excerpts = defineCollection({
     loader: file('./data/excerpts.json', {
@@ -34,7 +34,18 @@ const diary = defineCollection({
     })
 })
 
+const blog = defineCollection({
+    loader: glob({
+        pattern: '*.md',
+        base: './data/blog',
+    }),
+    schema: z.object({
+        title: z.string(),
+        tags: z.array(tagSchema),
+        time: z.coerce.date(),
+    })
+})
 
 export const collections = {
-    excerpts, diary
+    excerpts, diary, blog
 }

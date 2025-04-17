@@ -1,15 +1,18 @@
 ---
-import type {DiaryItem} from '@/libs/notion';
-import DateTime from '@/components/diary/DateTime.astro';
-import NotionRender from '@/components/notion/NotionRender.astro';
+import type { CollectionEntry } from 'astro:content'
+import { render } from 'astro:content'
+import DateTime from '@/components/diary/DateTime.astro'
+import '@/styles/article.css'
 
 interface Props {
-    diary: DiaryItem;
+    entry: CollectionEntry<'blog'>
 }
 
-const { diary } = Astro.props;
+const { entry } = Astro.props
+
+const { Content } = await render(entry)
 ---
-<article>
-    <NotionRender id={diary.id} class='my-3' />
-    <DateTime date={diary.date} />
+<article class="article">
+    <Content />
+    <DateTime date={entry.data.time} />
 </article>

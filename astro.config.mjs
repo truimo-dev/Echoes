@@ -1,11 +1,9 @@
 // @ts-check
-import {defineConfig, envField} from 'astro/config';
-
-import tailwindcss from '@tailwindcss/vite';
-
-import vercel from '@astrojs/vercel';
-
-import solidJs from '@astrojs/solid-js';
+import { defineConfig, envField } from 'astro/config'
+import tailwindcss from '@tailwindcss/vite'
+import vercel from '@astrojs/vercel'
+import solidJs from '@astrojs/solid-js'
+import { rehypeImageWrapper } from './src/libs/rehype-plugin'
 
 // https://astro.build/config
 export default defineConfig({
@@ -19,6 +17,21 @@ export default defineConfig({
     ],
     compressHTML: true,
     output: 'server',
+    markdown: {
+        shikiConfig: {
+            themes: {
+                light: 'github-light',
+                dark: 'github-dark',
+            },
+            defaultColor: false,
+            wrap: false,
+        },
+        syntaxHighlight: {
+            type: 'shiki',
+            excludeLangs: ['math'],
+        },
+        rehypePlugins: [rehypeImageWrapper],
+    },
     env: {
         schema: {
             VERCEL_ENV: envField.string({

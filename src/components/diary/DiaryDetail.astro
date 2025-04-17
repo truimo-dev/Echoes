@@ -3,6 +3,7 @@ import type { CollectionEntry } from 'astro:content'
 import { render } from 'astro:content'
 import DateTime from './DateTime.astro'
 import DiaryImages from './DiaryImages'
+import '@/styles/article.css'
 
 interface Props {
     diary: CollectionEntry<'diary'>
@@ -10,9 +11,9 @@ interface Props {
 
 const { diary } = Astro.props
 
-const { Content  } = await render(diary)
+const { Content } = await render(diary)
 ---
-<article>
+<article class="article">
     <DiaryImages class="my-3" images={diary.data.images} client:visible />
     <Content />
     <DateTime date={diary.data.time} />

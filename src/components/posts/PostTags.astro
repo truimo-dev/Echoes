@@ -1,10 +1,11 @@
 ---
-import type {DiaryItem} from '@/libs/notion';
-import { getAnnotationsColor } from '@/components/notion/helper';
+import { z } from 'zod'
+import { tagSchema } from '@/libs/schema'
+import { getAnnotationsColor } from '@/components/notion/helper'
 
 interface Props {
-    class?: string;
-    tags: DiaryItem['tags'];
+    class?: string
+    tags: Array<z.infer<typeof tagSchema>>
 }
 
 const { tags, class: className } = Astro.props;

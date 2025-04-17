@@ -1,33 +1,29 @@
 ---
-import { queryDiaryCached } from '@/libs/notion';
-import Layout from '@/layouts/MainLayout.astro';
-import PostDetail from '@/components/posts/PostDetail.astro';
+import { getEntry } from 'astro:content'
+import Layout from '@/layouts/MainLayout.astro'
+import PostDetail from '@/components/posts/PostDetail.astro'
 
-const { slug } = Astro.params;
+const { slug } = Astro.params
 
 if (void 0 === slug) {
     return Astro.redirect('/404');
 }
 
-const diary = await queryDiaryCached(slug);
+const entry = await getEntry('blog', slug)
 
-if (null === diary) {
-    return Astro.redirect('/404');
+if (!entry) {
+    return Astro.redirect('/404')
 }
 
-if ('diary' === diary.type) {
-    return Astro.redirect(`/diary/${diary.name}`);
-}
-
-const title = `Post # ${diary.title.length > 0 ? diary.title : diary.name}`
+const title = `Post # ${entry.data.title.length > 0 ? entry.data.title : entry.id}`
 ---
-<Layout title={title} description='There are my diary.'>
+<Layout title={title} description='There are my post.'>
     <div class="mx-auto max-w-3xl">
         <div class="mx-4">
-            <p class="text-2xl font-bold">{title}</p>
+            <h1 class="text-lg font-bold">{title}</h1>
         </div>
         <div class="select-none mx-4">
-            <PostDetail diary={diary}/>
+            <PostDetail entry={entry}/>
         </div>
     </div>
 </Layout>

@@ -1,23 +1,23 @@
 ---
-import type {DiaryItem} from '@/libs/notion';
-import Link from '@/components/ui/Link.astro';
-import DateTime from '@/components/diary/DateTime.astro';
-import PostTags from './PostTags.astro';
+import type { CollectionEntry } from 'astro:content'
+import Link from '@/components/ui/Link.astro'
+import DateTime from '@/components/diary/DateTime.astro'
+import PostTags from './PostTags.astro'
 
 interface Props {
-    diary: DiaryItem;
+    entry: CollectionEntry<'blog'>
 }
 
-const { diary } = Astro.props;
+const { entry } = Astro.props
 ---
 <article class='article rounded-xl p-3.5 bg-zinc-600/5 dark:bg-zinc-500/20'>
-    <PostTags class="mb-2" tags={diary.tags} />
+    <PostTags class="mb-2" tags={entry.data.tags} />
     <div class="flex items-end justify-between">
         <div class="text-left">
-            <p class="text-xl font-bold"><Link href={`/posts/${diary.name}`}>{diary.title}</Link></p>
+            <p class="text-xl font-bold"><Link href={`/posts/${entry.id}`}>{entry.data.title}</Link></p>
         </div>
         <div>
-            <DateTime date={diary.date} />
+            <DateTime date={entry.data.time} />
         </div>
     </div>
 </article>

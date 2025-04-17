@@ -11,7 +11,7 @@ interface Props {
 
 const { diary } = Astro.props
 
-const { Content  } = await render(diary)
+const { Content } = await render(diary)
 ---
 <article class='article rounded-xl p-3.5 bg-zinc-600/5 dark:bg-zinc-500/20'>
     <DiaryImages class="mb-3" images={diary.data.images} client:visible />
