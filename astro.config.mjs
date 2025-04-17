@@ -49,18 +49,6 @@ export default defineConfig({
                 access: 'public',
                 default: 'https://example.upstash.io'
             }),
-            NOTION_KEY: envField.string({
-                context: 'server',
-                access: 'secret',
-            }),
-            NOTION_DIARY_DATABASE_ID: envField.string({
-                context: 'server',
-                access: 'public',
-            }),
-            NOTION_IMAGES_DATABASE_ID: envField.string({
-                context: 'server',
-                access: 'public',
-            }),
             CAMO_KEY: envField.string({
                 context: 'server',
                 access: 'secret',
