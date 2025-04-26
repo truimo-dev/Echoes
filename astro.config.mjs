@@ -3,7 +3,9 @@ import { defineConfig, envField } from 'astro/config'
 import tailwindcss from '@tailwindcss/vite'
 import vercel from '@astrojs/vercel'
 import solidJs from '@astrojs/solid-js'
-import { rehypeImageWrapper } from './src/libs/rehype-plugin'
+import sitemap from '@astrojs/sitemap'
+import { rehypeImageWrapper } from './src/libs/rehype-plugin.js'
+
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,9 +14,8 @@ export default defineConfig({
             tailwindcss()
         ],
     },
-    integrations: [
-        solidJs()
-    ],
+    site: 'https://www.qxm.me',
+    integrations: [solidJs(), sitemap()],
     compressHTML: true,
     output: 'server',
     markdown: {
