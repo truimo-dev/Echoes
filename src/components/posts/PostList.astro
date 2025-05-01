@@ -1,15 +1,17 @@
 ---
 import type { CollectionEntry } from 'astro:content'
 import { getCollection } from 'astro:content'
+import _ from 'lodash'
 import PostCard from './PostCard.astro'
 
 interface Post extends CollectionEntry<'blog'> {
 } 
 
 const blog = await getCollection('blog')
+const list = _.orderBy(blog, ['data.time'], ['desc'])
 ---
 <div class="grid grid-cols-1 gap-6 select-none">
-    {blog.map((item: Post) => (
+    {list.map((item: Post) => (
         <PostCard entry={item} />
     ))}
 </div>

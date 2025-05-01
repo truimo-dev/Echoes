@@ -1,19 +1,17 @@
 ---
 import type { CollectionEntry } from 'astro:content'
 import { getCollection } from 'astro:content'
-import dayjs from 'dayjs'
+import _ from 'lodash'
 import DiaryCard from '@/components/diary/DiaryCard.astro'
 
 interface Diary extends CollectionEntry<'diary'> {
 }
 
 const diary = await getCollection('diary')
-const sortedDiary = diary.sort((a, b) => {
-    return dayjs(b.data.time).valueOf() - dayjs(a.data.time).valueOf()
-})
+const list = _.orderBy(diary, ['data.time'], ['desc'])
 ---
 <div class="grid grid-cols-1 gap-6 select-none">
-    {sortedDiary.map((item: Diary) => (
+    {list.map((item: Diary) => (
         <DiaryCard diary={item} />
     ))}
 </div>
