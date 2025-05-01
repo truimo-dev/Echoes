@@ -11,8 +11,8 @@ interface Props {
 const { tags, class: className } = Astro.props;
 ---
 <div class={className}>
-    <p class="text-xs">
-        {tags.map(tag => {
+    <p class="text-xs space-x-2">
+        {tags.map((tag, idx) => {
             const color: string = getAnnotationsColor(tag.color);
             return (
                 <span class={color}># {tag.name}</span>
