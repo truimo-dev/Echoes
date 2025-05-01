@@ -4,6 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 import vercel from '@astrojs/vercel'
 import solidJs from '@astrojs/solid-js'
 import sitemap from '@astrojs/sitemap'
+import mdx from '@astrojs/mdx'
 import { rehypeImageWrapper } from './src/libs/rehype-plugin.js'
 
 
@@ -15,7 +16,7 @@ export default defineConfig({
         ],
     },
     site: 'https://www.qxm.me',
-    integrations: [solidJs(), sitemap()],
+    integrations: [solidJs(), mdx(), sitemap()],
     compressHTML: true,
     output: 'server',
     markdown: {
