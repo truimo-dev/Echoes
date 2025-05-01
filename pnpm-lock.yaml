@@ -37,7 +37,7 @@ importers:
         version: 1.5.0(react@19.0.0)
       '@vercel/functions':
         specifier: ^2.0.0
-        version: 2.0.0
+        version: 2.0.1
       astro:
         specifier: 5.7.10
         version: 5.7.10(@types/node@22.15.3)(@upstash/redis@1.34.8)(jiti@2.4.2)(lightningcss@1.29.2)(rollup@4.40.1)(typescript@5.7.2)(yaml@2.7.0)
@@ -832,8 +832,8 @@ packages:
   '@vercel/edge@1.2.1':
     resolution: {integrity: sha512-1++yncEyIAi68D3UEOlytYb1IUcIulMWdoSzX2h9LuSeeyR7JtaIgR8DcTQ6+DmYOQn+5MCh6LY+UmK6QBByNA==}
 
-  '@vercel/functions@2.0.0':
-    resolution: {integrity: sha512-BSwIihLHoV18gerKZJyGuqd3rtaYM6rJvET1kOwKktshucyaHXTJel7Cxegs+sdX0NZqsX4LO2MFnMU2jG01Cw==}
+  '@vercel/functions@2.0.1':
+    resolution: {integrity: sha512-WmGX0+wAPn0AEYN5GZjrlrGE6Vr/pkkmbfHoZjoAmJn+Vybi8/jM0gil4M3D8hRYq3k1uDKuNzrHnToXc+s8Ag==}
     engines: {node: '>= 18'}
     peerDependencies:
       '@aws-sdk/credential-provider-web-identity': '*'
@@ -3076,7 +3076,7 @@ snapshots:
 
   '@vercel/edge@1.2.1': {}
 
-  '@vercel/functions@2.0.0': {}
+  '@vercel/functions@2.0.1': {}
 
   '@vercel/nft@0.29.2(rollup@4.40.1)':
     dependencies:
