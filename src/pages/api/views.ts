@@ -1,7 +1,7 @@
 import type {APIRoute} from 'astro'
 import { VERCEL_ENV } from 'astro:env/server'
 import { redis } from '@/libs/redis'
-import { kvKeys } from '@/constant/kv'
+import { kvKeys } from '@/constants/kv'
 
 
 export const GET: APIRoute = async ({ request }) => {
