@@ -16,7 +16,7 @@ const { Content } = await render(diary)
 <article class="article rounded-xl p-3.5 bg-zinc-600/5 dark:bg-zinc-500/20">
     <DiaryImages class="mb-3" images={diary.data.images} client:visible />
     <Content />
-    <div class="flex items-center justify-between">
+    <div class="flex items-center justify-between gap-6">
         <div class="text-gray-800 text-xs text-left dark:text-gray-300">
             <p><Link href={`/diary/${diary.id}`}>Read More.</Link></p>
         </div>
