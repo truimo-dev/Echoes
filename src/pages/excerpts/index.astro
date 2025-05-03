@@ -3,6 +3,8 @@ import { getCollection } from 'astro:content'
 import Layout from '@/layouts/MainLayout.astro'
 import Excerpt from '@/components/excerpts/Excerpt.astro'
 
+export const prerender = true
+
 const list = await getCollection('excerpts')
 ---
 <Layout title='Excerpts' description='Here are some excerpts.'>

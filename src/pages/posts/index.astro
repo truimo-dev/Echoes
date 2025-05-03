@@ -1,6 +1,8 @@
 ---
 import Layout from '@/layouts/MainLayout.astro'
 import PostList from '@/components/posts/PostList.astro'
+
+export const prerender = true
 ---
 <Layout title='Posts' description='There are my posts.'>
     <div class="mx-auto max-w-3xl">

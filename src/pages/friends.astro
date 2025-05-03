@@ -3,6 +3,8 @@ import { friends } from '@/constants/friends'
 import Layout from '@/layouts/MainLayout.astro'
 import Link from '@/components/ui/Link.astro'
 import Friend from '@/components/friends/Friend.astro'
+
+export const prerender = true
 ---
 <Layout title='Friends' description='There are friend Links.'>
     <div class="mx-auto max-w-3xl">

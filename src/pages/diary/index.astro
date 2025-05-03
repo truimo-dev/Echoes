@@ -1,6 +1,8 @@
 ---
 import Layout from '@/layouts/MainLayout.astro'
 import DiaryList from '@/components/diary/DiaryList.astro'
+
+export const prerender = true
 ---
 <Layout title='Diary' description='There are my diary.'>
     <div class="mx-auto max-w-3xl">
