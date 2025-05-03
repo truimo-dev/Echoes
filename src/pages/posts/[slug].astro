@@ -1,12 +1,27 @@
 ---
 import { getEntry } from 'astro:content'
+import { getSortedPosts } from '@/utils/content'
 import Layout from '@/layouts/MainLayout.astro'
 import PostDetail from '@/components/posts/PostDetail.astro'
 
+export const prerender = true
+
+export async function getStaticPaths() {
+    const posts = await getSortedPosts()
+
+    return posts.map((entry) => ({
+		params: { slug: entry.id },
+		props: { entry },
+	}))
+}
+
+const { entry } = Astro.props
+
+/*
 const { slug } = Astro.params
 
 if (void 0 === slug) {
-    return Astro.redirect('/404');
+    return Astro.redirect('/404')
 }
 
 const entry = await getEntry('blog', slug)
@@ -14,6 +29,7 @@ const entry = await getEntry('blog', slug)
 if (!entry) {
     return Astro.redirect('/404')
 }
+*/
 
 const title = `Post # ${entry.data.title.length > 0 ? entry.data.title : entry.id}`
 ---
