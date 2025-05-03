@@ -24,6 +24,45 @@
     font-size: 16px;
 }
 
+.article h1, .article h2, .article h3, .article h4, .article h5, .article h6 {
+    position: relative;
+}
+
+.article h1::before, .article h2::before, .article h3::before, .article h4::before, .article h5::before, .article h6::before {
+    position: absolute;
+    right: 100%;
+    bottom: 0;
+    text-align: right;
+    padding-right: calc(var(--spacing) * 2);
+    font-weight: normal;
+    font-variant: small-caps;
+    font-size: 13px;
+}
+
+.article h1::before {
+    content: 'H1';
+}
+
+.article h2::before {
+    content: 'H2';
+}
+
+.article h3::before {
+    content: 'H3';
+}
+
+.article h4::before {
+    content: 'H4';
+}
+
+.article h5::before {
+    content: 'H5';
+}
+
+.article h6::before {
+    content: 'H6';
+}
+
 .article ul {
     margin-left: 16px;
 }
