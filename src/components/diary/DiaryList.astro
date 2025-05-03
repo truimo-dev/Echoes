@@ -1,14 +1,9 @@
 ---
-import type { CollectionEntry } from 'astro:content'
-import { getCollection } from 'astro:content'
-import _ from 'lodash'
+import type { Post } from '@/types/content'
+import { getSortedDiary } from '@/utils/content'
 import DiaryCard from '@/components/diary/DiaryCard.astro'
 
-interface Diary extends CollectionEntry<'diary'> {
-}
-
-const diary = await getCollection('diary')
-const list = _.orderBy(diary, ['data.time'], ['desc'])
+const list = await getSortedDiary()
 ---
 <div class="grid grid-cols-1 gap-6 select-none">
     {list.map((item: Diary) => (
